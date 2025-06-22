@@ -1,0 +1,33 @@
+---
+import Page from "../../layouts/Page.astro";
+import { SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Page title="Blog" description={SITE_DESCRIPTION}>
+  <header class="mb-6 lg:mb-8">
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl text-jlp-burnt">Blog</h1>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    {
+      posts.map((post) => (
+        <article class="leading-tight mb-6">
+          <a href={`/blog/${post.slug}/`} class="font-bold no-underline text-jlp-burnt hover:text-jlp-amber">
+            {post.data.title}
+          </a>
+          <p class="text-xs sm:text-sm text-gray-600 mb-2 uppercase tracking-wide">
+            <FormattedDate date={post.data.pubDate} />
+          </p>
+          {post.data.excerpt && <p class="text-sm sm:text-base mb-2">{post.data.excerpt}</p>}
+          <p>
+            <a href={`/blog/${post.slug}/`}>Read more →</a>
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</Page>

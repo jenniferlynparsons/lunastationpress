@@ -1,0 +1,78 @@
+---
+import { SITE_TITLE } from "../consts";
+import NavLink from "./NavLink.astro";
+---
+
+<header class="container w-full max-w-7xl py-6 lg:py-12 px-4 sm:px-6 lg:px-20 bg-jlp-amber-light relative">
+  <div class="flex justify-center items-center mb-6">
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-jlp-blue pb-1 text-center">
+      <a href="/">{SITE_TITLE}</a>
+    </h1>
+  </div>
+
+  <navbar id="site-navigation" class="main-navigation w-full flex items-center justify-center" role="navigation">
+    <!-- Hamburger button for mobile -->
+    <button id="mobile-menu-button" class="sm:hidden p-2 text-jlp-burnt hover:text-jlp-amber focus:outline-none focus:ring-2 focus:ring-jlp-amber" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <!-- Navigation menu -->
+    <ul id="mobile-menu" class="w-full hidden sm:flex flex-col sm:flex-row justify-center items-center font-serif uppercase text-sm sm:text-base">
+      <NavLink href="/books">Books</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
+      <NavLink href="/blog">Blog</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
+      <!-- <NavLink href="/zines">Zines</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div> -->
+      <NavLink href="/publications">Publications</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
+      <NavLink href="/projects">Projects</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
+      <NavLink href="/about">About</NavLink>
+      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
+      <NavLink href="/contact">Contact</NavLink>
+    </ul>
+  </navbar>
+</header>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", function () {
+        const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+
+        // Toggle menu visibility
+        if (isExpanded) {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          menuButton.setAttribute("aria-expanded", "false");
+        } else {
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("flex");
+          menuButton.setAttribute("aria-expanded", "true");
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Ensure mobile menu is properly positioned */
+  #mobile-menu {
+    @apply absolute top-full left-0 right-0 bg-jlp-amber-light border-t border-jlp-blue/20 py-4;
+  }
+
+  /* Show menu on larger screens */
+  @media (min-width: 640px) {
+    #mobile-menu {
+      @apply static border-0 py-0;
+      background: none;
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PageContainer from "../components/PageContainer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import HeroImage from "../components/HeroImage.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, heroImage, heroAltText, pubDate, author, authorSlug, postCategory, categorySlug } = Astro.props;
+---
+
+<PageContainer sidebarVisible>
+  <div class="mb-4 sm:mb-6">
+    {heroImage && <HeroImage imagePath={heroImage} altText={heroAltText ? heroAltText : ""} />}
+  </div>
+  <div class="px-4 sm:px-6 lg:px-0">
+    <h1 class="antialiased font-normal mb-0 text-2xl sm:text-3xl lg:text-4xl leading-tight">{title}</h1>
+    <p class="uppercase text-xs sm:text-sm text-gray-600 mb-4">
+      <a href={authorSlug} class="no-underline hover:text-jlp-burnt">{author}</a> | <FormattedDate date={pubDate} />
+    </p>
+    <div class="mt-3 mb-6 border-b-2 border-jlp-burnt w-16 sm:w-20"></div>
+    <div class="prose prose-sm sm:prose-lg max-w-none">
+      <slot />
+    </div>
+    <p class="uppercase text-xs sm:text-sm mt-10 pt-6">
+      Posted in <a href={categorySlug} class="hover:text-jlp-burnt">{postCategory}</a>
+    </p>
+  </div>
+  <!-- TODO: Add prev/next links -->
+</PageContainer>
