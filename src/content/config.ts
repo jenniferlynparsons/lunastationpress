@@ -25,6 +25,8 @@ const books = defineCollection({
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
 		coverImage: z.string().optional(),
+		heroImage: z.string().optional(),
+		author: z.string().optional(),
 		amazonLink: z.string().optional().nullable(),
 		gumroadLink: z.string().optional().nullable(),
 		weightlessLink: z.string().optional().nullable(),
@@ -42,5 +44,22 @@ const books = defineCollection({
 	}),
 });
 
+const authors = defineCollection({
+	type: 'content',
+	schema: z.object({
+		name: z.string(),
+		slug: z.string(),
+		bio: z.string().optional(),
+		website: z.string().optional(),
+		photoUrl: z.string().optional(),
+		socialLinks: z.object({
+			twitter: z.string().optional(),
+			instagram: z.string().optional(),
+			facebook: z.string().optional(),
+			linkedin: z.string().optional(),
+		}).optional(),
+	}),
+});
 
-export const collections = { blog, books };
+
+export const collections = { blog, books, authors };

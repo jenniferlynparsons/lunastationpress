@@ -1,5 +1,5 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Jennifer Lyn Parsons';
-export const SITE_DESCRIPTION = 'Purveyor of Stories and Tales';
+export const SITE_TITLE = 'Luna Station Press';
+export const SITE_DESCRIPTION = 'Fiction . Non-Fiction . Poetry';

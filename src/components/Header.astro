@@ -1,41 +1,87 @@
 ---
-import { SITE_TITLE } from "../consts";
 import NavLink from "./NavLink.astro";
+import SearchModal from "./SearchModal.astro";
+
+const { showHero = false } = Astro.props;
 ---
 
-<header class="container w-full max-w-7xl py-6 lg:py-12 px-4 sm:px-6 lg:px-20 bg-jlp-amber-light relative">
-  <div class="flex justify-center items-center mb-6">
-    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-jlp-blue pb-1 text-center">
-      <a href="/">{SITE_TITLE}</a>
-    </h1>
+<!-- Header with conditional hero content -->
+<header class={`relative ${showHero ? "min-h-screen bg-cover bg-center bg-no-repeat" : ""}`} style={showHero ? "background-image: url('/images/bg_13_big.jpg');" : ""}>
+  <!-- Light overlay for better text contrast while preserving background -->
+  {showHero && <div class="absolute inset-0 bg-black bg-opacity-20" />}
+
+  <div class="relative z-10">
+    <!-- Top Navigation Bar -->
+    <nav class="w-full bg-black">
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex items-center justify-between">
+          <!-- Logo/Brand -->
+          <a href="/" class="flex items-center space-x-3 text-white hover:text-orange-200 transition-colors duration-300">
+            <!-- Decorative symbol (using a simple star for now, can be replaced with custom icon) -->
+            <img src="/images/logo.png" alt="Luna Station Press" class="h-8 md:h-10" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <ul class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase">
+            <li><NavLink href="/">Home</NavLink></li>
+            <li><NavLink href="/catalog">Catalog</NavLink></li>
+            <li><NavLink href="/chacruna">Chacruna</NavLink></li>
+            <li><NavLink href="/quarterly">Quarterly</NavLink></li>
+            <li><NavLink href="/news">News</NavLink></li>
+            <li><NavLink href="/about">About</NavLink></li>
+            <li><NavLink href="/contact">Contact</NavLink></li>
+          </ul>
+
+          <!-- Search and Mobile Menu -->
+          <div class="flex items-center space-x-4">
+            <!-- Search button -->
+            <button id="search-button" class="p-2 text-white hover:text-orange-200 focus:outline-none transition-colors duration-300" aria-label="Search" onclick="showSearchModal()">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </button>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-white hover:text-orange-200 focus:outline-none transition-colors duration-300" aria-label="Toggle navigation menu" aria-expanded="false">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-6 bg-black bg-opacity-80 rounded-lg p-6">
+          <ul class="space-y-4 text-center text-sm uppercase tracking-wider">
+            <li><NavLink href="/" class="block py-3">Home</NavLink></li>
+            <li><NavLink href="/catalog" class="block py-3">Catalog</NavLink></li>
+            <li><NavLink href="/chacruna" class="block py-3">Chacruna</NavLink></li>
+            <li><NavLink href="/quarterly" class="block py-3">Quarterly</NavLink></li>
+            <li><NavLink href="/news" class="block py-3">News</NavLink></li>
+            <li><NavLink href="/about" class="block py-3">About</NavLink></li>
+            <li><NavLink href="/contact" class="block py-3">Contact</NavLink></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content - Only shown when showHero is true -->
+    {
+      showHero && (
+        <div class="container mx-auto px-4 pt-32 pb-40 text-center text-white">
+          <div class="max-w-5xl mx-auto">
+            <h2 class="text-xl md:text-2xl font-light tracking-[0.3em] uppercase mb-12 text-white opacity-90">Welcome to</h2>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.15em] uppercase mb-16 leading-tight text-white">Luna Station Press</h1>
+            <p class="text-xl md:text-2xl font-light tracking-[0.1em] opacity-90 max-w-3xl mx-auto leading-relaxed">Small but mighty. A passion for stories. Fiercely independent.</p>
+          </div>
+        </div>
+      )
+    }
   </div>
-
-  <navbar id="site-navigation" class="main-navigation w-full flex items-center justify-center" role="navigation">
-    <!-- Hamburger button for mobile -->
-    <button id="mobile-menu-button" class="sm:hidden p-2 text-jlp-burnt hover:text-jlp-amber focus:outline-none focus:ring-2 focus:ring-jlp-amber" aria-label="Toggle navigation menu" aria-expanded="false">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-
-    <!-- Navigation menu -->
-    <ul id="mobile-menu" class="w-full hidden sm:flex flex-col sm:flex-row justify-center items-center font-serif uppercase text-sm sm:text-base">
-      <NavLink href="/books">Books</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
-      <NavLink href="/blog">Blog</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
-      <!-- <NavLink href="/zines">Zines</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div> -->
-      <NavLink href="/publications">Publications</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
-      <NavLink href="/projects">Projects</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
-      <NavLink href="/about">About</NavLink>
-      <div class="h-px w-8 sm:h-4 sm:w-px lg:h-4 lg:w-px bg-current opacity-30 my-2 sm:my-0"></div>
-      <NavLink href="/contact">Contact</NavLink>
-    </ul>
-  </navbar>
 </header>
+
+<!-- Search Modal -->
+<SearchModal />
 
 <script>
   // Mobile menu toggle functionality
@@ -43,36 +89,19 @@ import NavLink from "./NavLink.astro";
     const menuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
+    // Mobile menu toggle
     if (menuButton && mobileMenu) {
       menuButton.addEventListener("click", function () {
         const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
 
-        // Toggle menu visibility
         if (isExpanded) {
           mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("flex");
           menuButton.setAttribute("aria-expanded", "false");
         } else {
           mobileMenu.classList.remove("hidden");
-          mobileMenu.classList.add("flex");
           menuButton.setAttribute("aria-expanded", "true");
         }
       });
     }
   });
 </script>
-
-<style>
-  /* Ensure mobile menu is properly positioned */
-  #mobile-menu {
-    @apply absolute top-full left-0 right-0 bg-jlp-amber-light border-t border-jlp-blue/20 py-4;
-  }
-
-  /* Show menu on larger screens */
-  @media (min-width: 640px) {
-    #mobile-menu {
-      @apply static border-0 py-0;
-      background: none;
-    }
-  }
-</style>

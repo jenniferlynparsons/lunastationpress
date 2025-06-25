@@ -1,113 +1,144 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import PageContainer from "../components/PageContainer.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import CoverImage from "../components/CoverImage.astro";
+import BookHero from "../components/BookHero.astro";
+import AuthorBio from "../components/AuthorBio.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
 type Props = CollectionEntry<"books">["data"];
 
-const { title, pubDate, gumroadLink, weightlessLink, kindleLink, koboLink, coverImage, amazonLink, payhipLink, itchLink, goodreadsLink, isbn10, isbn13, pageCount, genre, category } = Astro.props;
+const { title, pubDate, gumroadLink, weightlessLink, kindleLink, koboLink, coverImage, heroImage, author, amazonLink, payhipLink, itchLink, goodreadsLink, isbn10, isbn13, pageCount, genre, category } = Astro.props;
+
+// Get related books by the same author
+const allBooks = await getCollection("books");
+const relatedBooks = allBooks.filter((book) => book.data.author === author && book.data.title !== title).slice(0, 2); // Show up to 2 related books
+
+// Get author information
+let authorData: CollectionEntry<"authors"> | undefined = undefined;
+if (author) {
+  try {
+    const allAuthors = await getCollection("authors");
+    console.log("Book author field:", author);
+    console.log("Available authors:", allAuthors.map(a => ({ name: a.data.name, slug: a.data.slug, bio: a.data.bio })));
+    
+    authorData = allAuthors.find((authorEntry) => authorEntry.data.name === author || authorEntry.data.slug === author.toLowerCase().replace(/\s+/g, "-"));
+    
+    console.log("Found author data:", authorData ? { 
+      name: authorData.data.name, 
+      slug: authorData.data.slug, 
+      bio: authorData.data.bio,
+      bioLength: authorData.data.bio?.length 
+    } : "NOT FOUND");
+  } catch (error) {
+    console.log("Authors collection not found or error fetching author data:", error);
+  }
+}
 ---
 
-<PageContainer>
-  <div class="container w-full flex flex-col lg:flex-row flex-grow overflow-hidden mb-20 max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center lg:justify-start">
-      <div class="max-w-sm">
+<PageContainer title={`${title} - ${SITE_TITLE}`} description={SITE_DESCRIPTION} headerType="standard" containerClass="">
+  <!-- Hero Section -->
+  {heroImage && author && <BookHero title={title} author={author} heroImage={heroImage} />}
+
+  <!-- Main Content Section -->
+  <div class="container w-full flex flex-col lg:flex-row flex-grow overflow-hidden mb-20 max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto py-12">
+    <!-- Book Cover -->
+    <div class="w-full lg:w-1/3 mb-8 lg:mb-0 flex justify-center lg:justify-start">
+      <div class="max-w-xs lg:max-w-sm">
         {coverImage && <CoverImage imagePath={coverImage} altText={`Cover of ${title}`} />}
       </div>
     </div>
 
-    <div class="w-full lg:w-1/2 lg:ml-8">
-      <header class="entry-header">
-        <h1 class="text-jlp-burnt text-2xl sm:text-3xl lg:text-4xl mb-4">{title}</h1>
-      </header>
-
-      <div class="border-solid border-jlp-nymph border-y py-8 mb-8 text-sm sm:text-base">
-        <p class="m-0 mb-2">Available in Print: <a class="buy-link" href={amazonLink}>Amazon</a></p>
-        <div class="m-0">
-          <span class="block sm:inline">Digital: </span>
-          <div class="flex flex-wrap gap-2 sm:inline">
-            {
-              kindleLink && (
-                <>
-                  <a class="buy-link inline-block" href={kindleLink}>
-                    Kindle
-                  </a>
-                  <span class="hidden sm:inline"> | </span>
-                </>
-              )
-            }
-            {
-              gumroadLink && (
-                <>
-                  <a class="buy-link inline-block" href={gumroadLink}>
-                    Gumroad
-                  </a>
-                  <span class="hidden sm:inline"> | </span>
-                </>
-              )
-            }
-            {
-              payhipLink && (
-                <>
-                  <a class="buy-link inline-block" href={payhipLink}>
-                    Payhip
-                  </a>
-                  <span class="hidden sm:inline"> | </span>
-                </>
-              )
-            }
-            {
-              koboLink && (
-                <>
-                  <a class="buy-link inline-block" href={koboLink}>
-                    Kobo
-                  </a>
-                  <span class="hidden sm:inline"> | </span>
-                </>
-              )
-            }
-            {
-              weightlessLink && (
-                <>
-                  <a class="buy-link inline-block" href={weightlessLink}>
-                    Weightless
-                  </a>
-                  <span class="hidden sm:inline"> | </span>
-                </>
-              )
-            }
-            {
-              itchLink && (
-                <a class="buy-link inline-block" href={itchLink}>
-                  itch.io
-                </a>
-              )
-            }
-          </div>
-        </div>
-      </div>
-      {
-        goodreadsLink && (
-          <p class="my-4">
-            <a href={goodreadsLink}>
-              <img decoding="async" src="https://s.gr-assets.com/assets/badge/goodreads-badge-add-plus-71eae69ca0307d077df66a58ec068898.png" alt="Add to Goodreads" width="130" height="41" class="max-w-full h-auto" />
-            </a>
-          </p>
-        )
-      }
-      <div class="prose-sm sm:prose-lg">
+    <!-- Book Details -->
+    <div class="w-full lg:w-2/3 lg:ml-12">
+      <!-- Book Description -->
+      <div class="prose prose-lg max-w-none mb-8 text-gray-700 leading-relaxed">
         <slot />
-        <ul class="text-sm sm:text-base">
-          <li><strong>Genre: </strong>{genre}</li>
-          <li><strong>Category: </strong>{category}</li>
-          <li><strong>Print Length: </strong>{pageCount} pages</li>
-          <li><strong>Publication Date: </strong><FormattedDate date={pubDate} /></li>
-          <li><strong>ISBN-13: </strong>{isbn13}</li>
-          <li><strong>ISBN-10: </strong>{isbn10}</li>
+      </div>
+
+      <!-- Book Metadata -->
+      <div class="bg-gray-50 p-6 rounded-lg mb-8">
+        <ul class="list-disc list-inside space-y-2 text-sm text-gray-600">
+          <li><strong>Genre:</strong> {genre}</li>
+          <li><strong>Print Length:</strong> {pageCount} pages</li>
+          <li><strong>Publication Date:</strong> <FormattedDate date={pubDate} /></li>
+          <li><strong>ISBN:</strong> {isbn13}</li>
         </ul>
       </div>
-    </div>
 
-    <br class="clear" />
-  </div></PageContainer
->
+      <!-- Purchase Links -->
+      <div class="py-6 mb-8">
+        <div class="flex flex-wrap gap-4">
+          {
+            amazonLink && (
+              <a href={amazonLink} class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                Paperback
+              </a>
+            )
+          }
+          {
+            (kindleLink || gumroadLink || payhipLink || koboLink || weightlessLink || itchLink) && (
+              <div class="flex flex-wrap gap-2">
+                {kindleLink && (
+                  <a href={kindleLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    Kindle
+                  </a>
+                )}
+                {gumroadLink && (
+                  <a href={gumroadLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    Gumroad
+                  </a>
+                )}
+                {payhipLink && (
+                  <a href={payhipLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    Payhip
+                  </a>
+                )}
+                {koboLink && (
+                  <a href={koboLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    Kobo
+                  </a>
+                )}
+                {weightlessLink && (
+                  <a href={weightlessLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    Weightless
+                  </a>
+                )}
+                {itchLink && (
+                  <a href={itchLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                    itch.io
+                  </a>
+                )}
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Author Bio Section -->
+  {author && <AuthorBio author={author} bio={authorData?.data.bio} website={authorData?.data.website} photoUrl={authorData?.data.photoUrl} socialLinks={authorData?.data.socialLinks} />}
+
+  <!-- Related Works Section -->
+  {
+    relatedBooks.length > 0 && (
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <h2 class="text-3xl font-light text-center mb-12 text-gray-800">Related works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          {relatedBooks.map((book) => (
+            <div class="text-center max-w-xs mx-auto">
+              <a href={`/books/${book.slug}`} class="block group">
+                <CoverImage imagePath={book.data.coverImage!} altText={book.data.title} />
+                <h3 class="text-lg font-medium text-gray-800 mt-4 group-hover:text-blue-600 transition-colors">{book.data.title}</h3>
+                <p class="text-sm text-gray-600">{book.data.author}</p>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</PageContainer>

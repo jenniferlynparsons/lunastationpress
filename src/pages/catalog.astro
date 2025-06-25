@@ -1,0 +1,187 @@
+---
+import PageContainer from "../components/PageContainer.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+
+// Import cover hero images from the cover-heros folder
+import takeOnMeHero from "../assets/cover-heros/take-on-me-hero.jpg";
+import bedtimeStoriesHero from "../assets/cover-heros/bedtime-stories-for-insouciant-alchemists-hero.jpg";
+import ayahuascaNightsHero from "../assets/cover-heros/ayahuasca-nights-hero.jpg";
+import aStirringInTheBonesHero from "../assets/cover-heros/a-stirring-in-the-bones-hero.jpg";
+import castlesStarshipsHero from "../assets/cover-heros/castles-starships-hero.jpg";
+import davidARatHero from "../assets/cover-heros/david-a-rat-hero.jpg";
+import invisibleCompositionsHero from "../assets/cover-heros/invisible-compositions-hero.jpg";
+import squalorGlamourHero from "../assets/cover-heros/squalor-glamour-hero.jpg";
+import theBestOfLsqHero from "../assets/cover-heros/the-best-of-lsq-the-first-five-years-hero.jpg";
+import theEmeraldTabletHero from "../assets/cover-heros/the-emerald-tablet-hero.jpg";
+import theEsbatSequenceHero from "../assets/cover-heros/the-esbat-sequence-hero.jpg";
+import theManWhoWalkedHero from "../assets/cover-heros/the-man-who-walked-hero.jpg";
+import cover062 from "../assets/cover-heros/062-cover.jpg";
+
+const pageTitle = `Catalog | ${SITE_TITLE}`;
+const pageDescription = "Browse our complete catalog of books and publications from Luna Station Press";
+
+let books: any[] = [];
+let categories: string[] = [];
+
+try {
+  // Get all books and sort by publication date (newest first)
+  const allBooks = await getCollection("books");
+  books = allBooks.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  
+  // Get unique categories for filtering
+  categories = [...new Set(books.map(book => book.data.category).filter(Boolean))];
+} catch (error) {
+  console.error("Error loading books:", error);
+}
+
+// Create a mapping of cover images to hero images
+const coverImageMap: Record<string, any> = {
+  // coverImage mappings (for books that only have coverImage property)
+  "take-on-me-cover.jpg": takeOnMeHero,
+  "bedtime-stories-for-insouciant-alchemists.jpg": bedtimeStoriesHero,
+  "the-esbat-sequence.jpg": theEsbatSequenceHero,
+  "the-man-who-walked.jpg": theManWhoWalkedHero,
+  "the-emerald-tablet.jpg": theEmeraldTabletHero,
+  "squalor-glamour.jpg": squalorGlamourHero,
+  "062-cover.jpg": cover062,
+  "the-best-of-lsq-the-first-five-years.jpg": theBestOfLsqHero,
+  "invisible-compositions.jpg": invisibleCompositionsHero,
+  
+  // heroImage mappings (for books that have heroImage property)
+  "take-on-me-hero.jpg": takeOnMeHero,
+  "bedtime-stories-for-insouciant-alchemists-hero.jpg": bedtimeStoriesHero,
+  "ayahuasca-nights-hero.jpg": ayahuascaNightsHero,
+  "a-stirring-in-the-bones-hero.jpg": aStirringInTheBonesHero,
+  "castles-starships-hero.jpg": castlesStarshipsHero,
+  "david-a-rat-hero.jpg": davidARatHero,
+  "invisible-compositions-hero.jpg": invisibleCompositionsHero,
+  "squalor-glamour-hero.jpg": squalorGlamourHero,
+  "the-best-of-lsq-the-first-five-years-hero.jpg": theBestOfLsqHero,
+  "the-emerald-tablet-hero.jpg": theEmeraldTabletHero,
+  "the-esbat-sequence-hero.jpg": theEsbatSequenceHero,
+  "the-man-who-walked-hero.jpg": theManWhoWalkedHero,
+};
+---
+
+<PageContainer 
+  title={pageTitle} 
+  description={pageDescription} 
+  headerType="standard"
+  containerClass=""
+>
+  <PageHeader title="Our Books" subtitle="Space fantasy, metaphysical explorations, stories for the young and young at heart, and of course, poetry." backgroundImage="/images/bg_071.jpg" />
+
+  <section class="py-16">
+    <div class="container mx-auto px-4 max-w-7xl">
+      {books.length === 0 ? (
+        <div class="text-center">
+          <p class="text-lg text-gray-600">No books found. Please check the content collection.</p>
+        </div>
+      ) : (
+        <>
+          <!-- Category Filter -->
+          <div class="mb-12">
+            <div class="flex justify-center">
+              <div class="bg-gray-50  p-2 inline-flex flex-wrap gap-2">
+                <button class="filter-btn active px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white shadow-sm text-gray-900" data-category="all">
+                  📚 All Items
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white text-gray-600" data-category="New Release">
+                  New Release
+                </button>
+                {categories.map(category => (
+                  category !== "New Release" && (
+                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white text-gray-600" data-category={category}>
+                      {category}
+                    </button>
+                  )
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Books Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="books-grid">
+            {books.map((book) => (
+              <a href={`/books/${book.slug}`} class="book-item group cursor-pointer block" data-category={book.data.category}>
+                <div class="relative overflow-hidden ">
+                  <!-- Book Cover -->
+                  <div class="bg-gray-200  overflow-hidden">
+                    {(book.data.heroImage || book.data.coverImage) ? (
+                      <img 
+                        src={
+                          book.data.heroImage 
+                            ? coverImageMap[book.data.heroImage]?.src || `/src/assets/cover-heros/${book.data.heroImage}`
+                            : coverImageMap[book.data.coverImage]?.src || cover062.src
+                        }
+                        alt={book.data.title}
+                        class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="w-full h-64 flex items-center justify-center bg-gradient-to-br from-purple-400 to-blue-500 text-white">
+                        <span class="text-lg font-bold text-center px-4">{book.data.title}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <!-- New Release Badge -->
+                  {book.data.category === "New Release" && (
+                    <div class="absolute top-0 left-0 w-28 h-28 z-10" style="background-color: #3b82f6; clip-path: polygon(0 0, 100% 0, 0 100%);">
+                      <div class="flex items-center justify-center w-full h-full">
+                        <span class="text-white text-xs font-bold transform -rotate-45 -translate-x-3 -translate-y-3">
+                          New Release
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <!-- Book Title -->
+                <div class="mt-4 text-center">
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    {book.data.title}
+                  </h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  <script is:inline>
+    // Category filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const bookItems = document.querySelectorAll('.book-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const category = this.dataset.category;
+          
+          // Update active button
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-white', 'shadow-sm', 'text-gray-900');
+            btn.classList.add('text-gray-600');
+          });
+          
+          this.classList.add('active', 'bg-white', 'shadow-sm', 'text-gray-900');
+          this.classList.remove('text-gray-600');
+          
+          // Filter books
+          bookItems.forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</PageContainer>

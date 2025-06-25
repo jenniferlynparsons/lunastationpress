@@ -1,11 +1,33 @@
 ---
+import { SITE_TITLE } from "../consts";
+import SocialMediaIcon from "./SocialMediaIcon.astro";
+
 const today = new Date();
 ---
 
-<footer class="bg-jlp-blue w-full flex flex-row flex-grow overflow-hidden h-32 sm:h-40 items-center">
-  <div class="w-full flex-grow px-4 sm:px-6 lg:px-8 py-3 overflow-auto">
-    <p class="text-center font-serif text-jlp-white text-sm sm:text-base">
-      &copy; {today.getFullYear()} Jennifer Lyn Parsons. All rights reserved.
-    </p>
+<footer class="bg-black text-white relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="w-full h-full" style="background-image: url('/images/bg_031.png'); background-repeat: repeat;"></div>
+  </div>
+
+  <!-- Footer content -->
+  <div class="relative z-10">
+    <!-- Top section -->
+    <div class="container mx-auto px-4 py-12">
+      <div class="flex flex-col items-center text-center max-w-2xl mx-auto">
+        <!-- Logo -->
+        <a href="/" class="mb-6">
+          <img src="/images/logo.png" alt={SITE_TITLE} class="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+        </a>
+
+        <!-- Social Links -->
+        <div class="flex space-x-6 mb-8">
+          <SocialMediaIcon href="https://www.facebook.com/LunaStationPress" platform="facebook" label="Facebook" />
+          <SocialMediaIcon href="http://twitter.com/lunastnpress" platform="twitter" label="Twitter" />
+          <SocialMediaIcon href="http://lunastationpress.tumblr.com/" platform="tumblr" label="Tumblr" />
+        </div>
+      </div>
+    </div>
   </div>
 </footer>

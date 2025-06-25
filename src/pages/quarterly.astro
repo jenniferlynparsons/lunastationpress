@@ -1,0 +1,40 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { SITE_TITLE } from "../consts";
+
+const pageTitle = `Luna Station Quarterly | ${SITE_TITLE}`;
+const pageDescription = "Luna Station Quarterly - A short fiction magazine featuring speculative fiction and more";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={pageDescription} />
+  </head>
+  <body class="bg-white">
+    <Header />
+
+    <main>
+      <PageHeader title="Luna Station Quarterly" subtitle="A short fiction magazine" backgroundImage="/images/bg_071.jpg" />
+
+      <section class="py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+          <div class="prose prose-lg mx-auto">
+            <p class="text-lg text-gray-600 leading-relaxed">Luna Station Quarterly is our flagship short fiction magazine, featuring the best in speculative fiction, science fiction, fantasy, and other genre works.</p>
+
+            <p class="text-lg text-gray-600 leading-relaxed">Each issue brings together established and emerging voices in speculative fiction, with a particular focus on women writers and diverse perspectives.</p>
+
+            <div class="text-center mt-12">
+              <a href="/books" class="inline-block bg-purple-800 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"> Browse Issues </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

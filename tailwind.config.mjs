@@ -20,26 +20,27 @@ export default {
 			'note': '6px',
 		},
 		colors: {
-			'jlp-blue': '#49819b',
-			'jlp-amber': '#cfc8b3',
-			'jlp-nymph': '#7ba1a2',
-			'jlp-white': '#ffffff',
-			'jlp-black': '#222222',
-			'jlp-navy': '#182740',
-			'jlp-burnt': '#d67d45',
-			'jlp-amber-light': '#f9f7f3',
+			'blue': '#49819b',
+			'amber': '#cfc8b3',
+			'nymph': '#7ba1a2',
+			'white': '#ffffff',
+			'black': '#222222',
+			'navy': '#182740',
+			'burnt': '#d67d45',
+			'amber-light': '#f9f7f3',
 		  },
 		fontFamily: {
 			serif: ['Georgia', 'serif'],
+			sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
 		},
 		textColor: {
-			'jlp-blue': '#49819b',
-			'jlp-amber': '#cfc8b3',
-			'jlp-nymph': '#7ba1a2',
-			'jlp-white': '#ffffff',
-			'jlp-black': '#222222',
-			'jlp-navy': '#182740',
-			'jlp-burnt': '#d67d45',
+			'blue': '#49819b',
+			'amber': '#cfc8b3',
+			'nymph': '#7ba1a2',
+			'white': '#ffffff',
+			'black': '#222222',
+			'navy': '#182740',
+			'burnt': '#d67d45',
 		},
 		extend: {
 			typography: {
@@ -61,7 +62,7 @@ export default {
 		require('@tailwindcss/typography'),
 		function({ addBase }) {
 			addBase({
-			'h1, h2, h3, h4, h5, h6': { fontFamily: 'Georgia' },
+			'h1, h2, h3, h4, h5, h6': { fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif' },
 			})
 	  	}
 	],
