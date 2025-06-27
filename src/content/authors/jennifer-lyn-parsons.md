@@ -1,6 +1,5 @@
 ---
 name: "Jennifer Lyn Parsons"
-slug: "jennifer-lyn-parsons"
 bio: "Jennifer Lyn Parsons is the founder of Luna Station Press and editor of Luna Station Quarterly. She writes fantasy and science fiction when not running the publishing house."
 website: "https://jenniferlynparsons.com"
 photoUrl: ""

@@ -1,6 +1,5 @@
 ---
 name: "Jason Martin"
-slug: "jason-martin"
 bio: "Jason Martin explores themes of consciousness, spirituality, and transformation in his fiction. His work draws from personal experiences with meditation and philosophical inquiry."
 website: ""
 photoUrl: ""

@@ -1,6 +1,5 @@
 ---
 name: "Elizabeth Hinckley"
-slug: "elizabeth-hinckley"
 bio: "Elizabeth Hinckley is an author of speculative fiction and fantasy."
 website: ""
 photoUrl: ""

@@ -1,7 +1,7 @@
 ---
 title: "Bedtime Stories (for Insouciant Alchemists)"
 pubDate: 2016-11-01
-coverImage: "bedtime-stories-for-insouciant-alchemists.jpg"
+coverImage: "bedtimestories-cover.jpg"
 category: "New Release"
 genre: "Poetry"
 pageCount: 406

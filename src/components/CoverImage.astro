@@ -9,10 +9,16 @@ interface Props {
 
 const { imagePath, altText } = Astro.props;
 
+// Handle undefined or empty imagePath
+if (!imagePath) {
+  throw new Error(`CoverImage component requires a valid imagePath, received: ${imagePath}`);
+}
+
 const fullImagePath = `/src/assets/cover-images/${imagePath}`;
 const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/cover-images/*.{jpeg,jpg,png,gif}");
-console.log(images);
-if (!images[fullImagePath]) throw new Error(`"${fullImagePath}" does not exist in glob: "/src/assets/cover-images/*.{jpeg,jpg,png,gif}"`);
+if (!images[fullImagePath]) {
+  throw new Error(`Cover image "${fullImagePath}" does not exist. Available images: ${Object.keys(images).join(", ")}`);
+}
 ---
 
 <Image src={images[fullImagePath]()} alt={altText} class="!m-0 w-full h-auto max-w-full" />

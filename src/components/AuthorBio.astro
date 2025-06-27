@@ -1,21 +1,9 @@
 ---
 const { author, bio, website, photoUrl, socialLinks } = Astro.props;
 
-console.log("AuthorBio component props:", { 
-  author, 
-  bio, 
-  bioType: typeof bio,
-  bioLength: bio?.length,
-  website, 
-  photoUrl, 
-  socialLinks 
-});
-
 // Default bio text if none provided
 const defaultBio = `Learn more about ${author}'s work and upcoming releases.`;
 const displayBio = bio || defaultBio;
-
-console.log("Using displayBio:", displayBio);
 ---
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
@@ -23,9 +11,9 @@ console.log("Using displayBio:", displayBio);
     <div class="flex-shrink-0">
       {
         photoUrl ? (
-          <img src={photoUrl} alt={`Photo of ${author}`} class="w-32 h-32 object-cover rounded-lg" />
+          <img src={photoUrl} alt={`Photo of ${author}`} class="w-60 object-cover " />
         ) : (
-          <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center">
+          <div class="w-60 bg-gray-200 flex items-center justify-center">
             <span class="text-gray-500 text-sm">Photo</span>
           </div>
         )
