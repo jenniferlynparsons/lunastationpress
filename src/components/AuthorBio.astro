@@ -4,14 +4,28 @@ const { author, bio, website, photoUrl, socialLinks } = Astro.props;
 // Default bio text if none provided
 const defaultBio = `Learn more about ${author}'s work and upcoming releases.`;
 const displayBio = bio || defaultBio;
+
+// Handle author photo import
+let authorPhoto: { default: ImageMetadata } | null = null;
+if (photoUrl) {
+  try {
+    const photos = import.meta.glob<{ default: ImageMetadata }>("/src/assets/author-photos/*.{jpeg,jpg,png,gif}");
+    const photoPath = `/src/assets/author-photos/${photoUrl}`;
+    if (photos[photoPath]) {
+      authorPhoto = await photos[photoPath]();
+    }
+  } catch (error) {
+    console.warn(`Could not load author photo: ${photoUrl}`);
+  }
+}
 ---
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
   <div class="flex flex-col md:flex-row items-start gap-8">
     <div class="flex-shrink-0">
       {
-        photoUrl ? (
-          <img src={photoUrl} alt={`Photo of ${author}`} class="w-60 object-cover " />
+        authorPhoto ? (
+          <img src={authorPhoto.default.src} alt={`Photo of ${author}`} class="w-60 object-cover " />
         ) : (
           <div class="w-60 bg-gray-200 flex items-center justify-center">
             <span class="text-gray-500 text-sm">Photo</span>

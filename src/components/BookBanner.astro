@@ -1,0 +1,13 @@
+---
+interface Props {
+  category: string;
+  label: string;
+  isActive?: boolean;
+}
+
+const { category, label, isActive = false } = Astro.props;
+---
+
+<div class={`filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white ${isActive ? "active bg-white shadow-sm text-gray-900" : "text-gray-600"}`} data-category={category}>
+  {label}
+</div>

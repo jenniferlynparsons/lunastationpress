@@ -1,12 +1,18 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import PageHeader from "../components/PageHeader.astro";
-import { SITE_TITLE } from "../consts";
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import PageHeader from "@components/PageHeader.astro";
+import CoverImage from "@components/CoverImage.astro";
+import { SITE_TITLE } from "@/consts";
+import { getCollection } from "astro:content";
+
+// Get all books with Chacruna imprint
+const allBooks = await getCollection("books");
+const chacrunaBooks = allBooks.filter((book) => book.data.imprint === "Chacruna").sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const pageTitle = `Chacruna | ${SITE_TITLE}`;
-const pageDescription = "Chacruna - Special publications from Luna Station Press";
+const pageDescription = "Chacruna - From the depths of the rainforest to the heights of the Hermetic tradition";
 ---
 
 <!doctype html>
@@ -18,19 +24,47 @@ const pageDescription = "Chacruna - Special publications from Luna Station Press
     <Header />
 
     <main>
-      <PageHeader title="Chacruna" backgroundImage="/images/bg_071.jpg" />
+      <PageHeader title="Chacruna" subtitle="The metaphysical imprint of Luna Station Press." backgroundImage="/images/bg_071.jpg" />
 
       <section class="py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-          <div class="prose prose-lg mx-auto">
-            <p class="text-lg text-gray-600 leading-relaxed">Chacruna represents our special publications line, featuring unique works that don't fit into our standard catalog format.</p>
-
-            <p class="text-lg text-gray-600 leading-relaxed">These publications explore the boundaries of genre fiction and creative non-fiction, often featuring experimental works or special collections.</p>
-
-            <div class="text-center mt-12">
-              <a href="/catalog" class="inline-block bg-purple-800 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"> View Publications </a>
-            </div>
+        <div class="container mx-auto px-4 max-w-6xl">
+          <!-- About Chacruna -->
+          <div class="prose prose-lg mx-auto max-w-4xl mb-16">
+            <p class="text-lg text-gray-700 leading-relaxed">From the depths of the rainforest to the heights of the Hermetic tradition, Chacruna is the next stage in Luna Station's growth as a publisher of ideas. With books on Reiki and the Tarot on the way, this imprint promises a non-dogmatic exploration of the mystery current that runs through the Western tradition and beyond.</p>
           </div>
+
+          <!-- Chacruna Books -->
+          {
+            chacrunaBooks.length > 0 && (
+              <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                  {chacrunaBooks.map((book) => (
+                    <div class="text-center max-w-xs mx-auto">
+                      <a href={`/books/${book.slug}`} class="block group">
+                        {book.data.coverImage ? (
+                          <CoverImage imagePath={book.data.coverImage} altText={book.data.title} className="h-72 mb-4" />
+                        ) : (
+                          <div class="bg-gray-200 aspect-[2/3] rounded flex items-center justify-center mb-4">
+                            <span class="text-gray-500 text-sm">No cover available</span>
+                          </div>
+                        )}
+                        <h3 class="text-lg font-medium text-gray-800 mt-4 group-hover:text-blue-600 transition-colors">{book.data.title}</h3>
+                        <p class="text-sm text-gray-600">{book.data.author}</p>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          {
+            chacrunaBooks.length === 0 && (
+              <div class="text-center">
+                <p class="text-gray-600">New Chacruna publications coming soon...</p>
+              </div>
+            )
+          }
         </div>
       </section>
     </main>

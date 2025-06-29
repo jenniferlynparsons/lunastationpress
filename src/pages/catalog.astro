@@ -1,23 +1,24 @@
 ---
-import PageContainer from "../components/PageContainer.astro";
-import PageHeader from "../components/PageHeader.astro";
-import { SITE_TITLE } from "../consts";
+import PageContainer from "@components/PageContainer.astro";
+import PageHeader from "@components/PageHeader.astro";
+import BookBanner from "@components/BookBanner.astro";
+import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
 
 // Import cover hero images from the cover-heros folder
-import takeOnMeHero from "../assets/cover-heros/take-on-me-hero.jpg";
-import bedtimeStoriesHero from "../assets/cover-heros/bedtime-stories-for-insouciant-alchemists-hero.jpg";
-import ayahuascaNightsHero from "../assets/cover-heros/ayahuasca-nights-hero.jpg";
-import aStirringInTheBonesHero from "../assets/cover-heros/a-stirring-in-the-bones-hero.jpg";
-import castlesStarshipsHero from "../assets/cover-heros/castles-starships-hero.jpg";
-import davidARatHero from "../assets/cover-heros/david-a-rat-hero.jpg";
-import invisibleCompositionsHero from "../assets/cover-heros/invisible-compositions-hero.jpg";
-import squalorGlamourHero from "../assets/cover-heros/squalor-glamour-hero.jpg";
-import theBestOfLsqHero from "../assets/cover-heros/the-best-of-lsq-the-first-five-years-hero.jpg";
-import theEmeraldTabletHero from "../assets/cover-heros/the-emerald-tablet-hero.jpg";
-import theEsbatSequenceHero from "../assets/cover-heros/the-esbat-sequence-hero.jpg";
-import theManWhoWalkedHero from "../assets/cover-heros/the-man-who-walked-hero.jpg";
-import cover062 from "../assets/cover-heros/062-cover.jpg";
+import takeOnMeHero from "@assets/cover-heros/take-on-me-hero.jpg";
+import bedtimeStoriesHero from "@assets/cover-heros/bedtime-stories-for-insouciant-alchemists-hero.jpg";
+import ayahuascaNightsHero from "@assets/cover-heros/ayahuasca-nights-hero.jpg";
+import aStirringInTheBonesHero from "@assets/cover-heros/a-stirring-in-the-bones-hero.jpg";
+import castlesStarshipsHero from "@assets/cover-heros/castles-starships-hero.jpg";
+import davidARatHero from "@assets/cover-heros/david-a-rat-hero.jpg";
+import invisibleCompositionsHero from "@assets/cover-heros/invisible-compositions-hero.jpg";
+import squalorGlamourHero from "@assets/cover-heros/squalor-glamour-hero.jpg";
+import theBestOfLsqHero from "@assets/cover-heros/the-best-of-lsq-the-first-five-years-hero.jpg";
+import theEmeraldTabletHero from "@assets/cover-heros/the-emerald-tablet-hero.jpg";
+import theEsbatSequenceHero from "@assets/cover-heros/the-esbat-sequence-hero.jpg";
+import theManWhoWalkedHero from "@assets/cover-heros/the-man-who-walked-hero.jpg";
+import cover062 from "@assets/cover-heros/062-cover.jpg";
 
 const pageTitle = `Catalog | ${SITE_TITLE}`;
 const pageDescription = "Browse our complete catalog of books and publications from Luna Station Press";
@@ -85,17 +86,11 @@ const coverImageMap: Record<string, any> = {
           <div class="mb-12">
             <div class="flex justify-center">
               <div class="bg-gray-50  p-2 inline-flex flex-wrap gap-2">
-                <button class="filter-btn active px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white shadow-sm text-gray-900" data-category="all">
-                  📚 All Items
-                </button>
-                <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white text-gray-600" data-category="New Release">
-                  New Release
-                </button>
+                <BookBanner category="all" label="📚 All Items" isActive={true} />
+                <BookBanner category="New Release" label="New Release" />
                 {categories.map(category => (
                   category !== "New Release" && (
-                    <button class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white text-gray-600" data-category={category}>
-                      {category}
-                    </button>
+                    <BookBanner category={category} label={category} />
                   )
                 ))}
               </div>

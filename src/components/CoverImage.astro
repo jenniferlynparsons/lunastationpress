@@ -2,12 +2,7 @@
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
-interface Props {
-  imagePath: string;
-  altText: string;
-}
-
-const { imagePath, altText } = Astro.props;
+const { imagePath, altText, className } = Astro.props;
 
 // Handle undefined or empty imagePath
 if (!imagePath) {
@@ -21,4 +16,4 @@ if (!images[fullImagePath]) {
 }
 ---
 
-<Image src={images[fullImagePath]()} alt={altText} class="!m-0 w-full h-auto max-w-full" />
+<Image src={images[fullImagePath]()} alt={altText} │ │ class:list={["!m-0 w-auto", className]} />

@@ -1,9 +1,12 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import PageHeader from "../components/PageHeader.astro";
-import { SITE_TITLE } from "../consts";
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import PageHeader from "@components/PageHeader.astro";
+import LinkButton from "@components/LinkButton.astro";
+import { SITE_TITLE } from "@/consts";
+
+import lsq062Cover from "@assets/cover-images/062-cover.jpg";
 
 const pageTitle = `Luna Station Quarterly | ${SITE_TITLE}`;
 const pageDescription = "Luna Station Quarterly - A short fiction magazine featuring speculative fiction and more";
@@ -18,17 +21,56 @@ const pageDescription = "Luna Station Quarterly - A short fiction magazine featu
     <Header />
 
     <main>
-      <PageHeader title="Luna Station Quarterly" subtitle="A short fiction magazine" backgroundImage="/images/bg_071.jpg" />
+      <PageHeader title="Luna Station Quarterly" subtitle="The idea that started it all, our quarterly literary magazine is packed with stellar fantasy and science fiction stories by emerging women-identified writers." backgroundImage="/images/bg_071.jpg" />
 
       <section class="py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-          <div class="prose prose-lg mx-auto">
-            <p class="text-lg text-gray-600 leading-relaxed">Luna Station Quarterly is our flagship short fiction magazine, featuring the best in speculative fiction, science fiction, fantasy, and other genre works.</p>
+        <div class="container mx-auto px-4 max-w-6xl">
+          <!-- About and Sidebar Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+              <!-- About the Quarterly -->
+              <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">About the Quarterly</h2>
+                <div class="prose prose-lg text-gray-700">
+                  <p class="mb-4">The on-going mission of Luna Station Quarterly is to display the vast and varied talents of female speculative fiction writers.</p>
 
-            <p class="text-lg text-gray-600 leading-relaxed">Each issue brings together established and emerging voices in speculative fiction, with a particular focus on women writers and diverse perspectives.</p>
+                  <p class="mb-4">This idea was conceived by founding editor, Jennifer Lyn Parsons, after she became aware of the apparent lack of support for the short story format within the literary community, and the particular lack of exposure of new female writers in general within speculative fiction.</p>
 
-            <div class="text-center mt-12">
-              <a href="/books" class="inline-block bg-purple-800 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"> Browse Issues </a>
+                  <p>After tickling at Jennifer's brain for a few years, the time became right for this concept to come to fruition, and the result is Luna Station Quarterly.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+              <!-- Submissions -->
+              <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Submissions</h3>
+                <div class="prose text-gray-700">
+                  <p class="mb-3">The Quarterly is currently closed for submissions!</p>
+                  <p>If you are a woman with a speculative fiction story to share, why not send us your story when we reopen on December 15th?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Our Latest Issue Section -->
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Our Latest Issue</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="md:w-1/3">
+                <img src={lsq062Cover.src} alt="LSQ Issue 062 cover" class="w-full h-auto" />
+              </div>
+              <div class="md:w-2/3">
+                <div class="prose prose-lg text-gray-700">
+                  <p class="mb-4">Elegy and promise stand side by side in this, the thirty fourth issue of your favorite Quarterly. Eight talented authors once again give you glimpses of worlds both familiar and alien, moving backwards and forwards in time and space, from Louisiana & Chicago, to a dusty settlement and abandoned house that bring new flavors to our tired notions of the apocalypse. The women and girls living these stories, like the authors that created them, are balancing old and new, grudges and hope, life and death. May we all learn from their journeys, their wisdom, and their folly.</p>
+
+                  <p class="mb-6">Our gorgeous cover is by Lâle Ann.</p>
+
+                  <LinkButton url="#" linkText="Enjoy the issue" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 ---
 import NavLink from "./NavLink.astro";
-import SearchModal from "./SearchModal.astro";
 
 const { showHero = false } = Astro.props;
 ---
@@ -27,20 +26,13 @@ const { showHero = false } = Astro.props;
             <li><NavLink href="/catalog">Catalog</NavLink></li>
             <li><NavLink href="/chacruna">Chacruna</NavLink></li>
             <li><NavLink href="/quarterly">Quarterly</NavLink></li>
-            <li><NavLink href="/news">News</NavLink></li>
+            <li><NavLink href="/blog">Blog</NavLink></li>
             <li><NavLink href="/about">About</NavLink></li>
             <li><NavLink href="/contact">Contact</NavLink></li>
           </ul>
 
-          <!-- Search and Mobile Menu -->
+          <!-- Mobile Menu -->
           <div class="flex items-center space-x-4">
-            <!-- Search button -->
-            <button id="search-button" class="p-2 text-white hover:text-orange-200 focus:outline-none transition-colors duration-300" aria-label="Search" onclick="showSearchModal()">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </button>
-
             <!-- Mobile menu button -->
             <button id="mobile-menu-button" class="lg:hidden p-2 text-white hover:text-orange-200 focus:outline-none transition-colors duration-300" aria-label="Toggle navigation menu" aria-expanded="false">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,7 +49,7 @@ const { showHero = false } = Astro.props;
             <li><NavLink href="/catalog" class="block py-3">Catalog</NavLink></li>
             <li><NavLink href="/chacruna" class="block py-3">Chacruna</NavLink></li>
             <li><NavLink href="/quarterly" class="block py-3">Quarterly</NavLink></li>
-            <li><NavLink href="/news" class="block py-3">News</NavLink></li>
+            <li><NavLink href="/blog" class="block py-3">Blog</NavLink></li>
             <li><NavLink href="/about" class="block py-3">About</NavLink></li>
             <li><NavLink href="/contact" class="block py-3">Contact</NavLink></li>
           </ul>
@@ -70,18 +62,15 @@ const { showHero = false } = Astro.props;
       showHero && (
         <div class="container mx-auto px-4 pt-32 pb-40 text-center text-white">
           <div class="max-w-5xl mx-auto">
-            <h2 class="text-xl md:text-2xl font-light tracking-[0.3em] uppercase mb-12 text-white opacity-90">Welcome to</h2>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.15em] uppercase mb-16 leading-tight text-white">Luna Station Press</h1>
-            <p class="text-xl md:text-2xl font-light tracking-[0.1em] opacity-90 max-w-3xl mx-auto leading-relaxed">Small but mighty. A passion for stories. Fiercely independent.</p>
+            <h2 class="text-xl md:text-2xl font-light tracking-[0.3em] uppercase mb-12 text-white opacity-90 [text-wrap:balance]">Welcome to</h2>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.15em] uppercase mb-16 leading-tight text-white [text-wrap:balance]">Luna Station Press</h1>
+            <p class="text-xl md:text-2xl font-light tracking-[0.1em] opacity-90 max-w-3xl mx-auto leading-relaxed [text-wrap:balance] [orphans:2] [widows:2]">Small but mighty. A passion for stories. Fiercely independent.</p>
           </div>
         </div>
       )
     }
   </div>
 </header>
-
-<!-- Search Modal -->
-<SearchModal />
 
 <script>
   // Mobile menu toggle functionality

@@ -11,9 +11,7 @@ const blog = defineCollection({
 		heroAltText: z.string().optional().nullable(),
 		excerpt: z.string().optional().nullable(),
 		author: z.string().optional().nullable(), 
-		authorSlug: z.string().optional().nullable(),
-		postCategory: z.string().optional().nullable(),
-		categorySlug: z.string().optional().nullable(),
+		category: z.string().optional().nullable(),
 	}),
 });
 
@@ -41,6 +39,7 @@ const books = defineCollection({
 		genre: z.string().optional().nullable(),
 		category: z.string().optional().nullable(),
 		tag: z.string().optional().nullable(),
+		imprint: z.string().optional().nullable(),
 	}),
 });
 

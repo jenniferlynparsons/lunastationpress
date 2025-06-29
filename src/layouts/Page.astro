@@ -1,8 +1,7 @@
 ---
-import PageContainer from "../components/PageContainer.astro";
-const { sidebarVisible } = Astro.props;
+import PageContainer from "@components/PageContainer.astro";
 ---
 
-<PageContainer sidebarVisible={sidebarVisible}>
+<PageContainer>
   <slot />
 </PageContainer>

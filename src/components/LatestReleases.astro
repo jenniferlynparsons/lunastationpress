@@ -1,19 +1,19 @@
 ---
 // Latest releases component for home page
 // This will eventually pull from the books content collection
-import takeOnMeCover from "../assets/cover-images/take-on-me-cover.jpg";
-import bedtimeStoriesCover from "../assets/cover-images/bedtimestories-cover.jpg";
-import lsq062Cover from "../assets/cover-images/062-cover.jpg";
+import takeOnMeCover from "@assets/cover-images/take-on-me-cover.jpg";
+import bedtimeStoriesCover from "@assets/cover-images/bedtimestories-cover.jpg";
+import lsq062Cover from "@assets/cover-images/062-cover.jpg";
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
   <!-- Take On Me -->
   <article class="group cursor-pointer">
     <a href="/books/take-on-me" class="block">
-      <div class="bg-white rounded-lg overflow-hidden">
+      <div class="bg-white overflow-hidden">
         <div class="flex justify-center p-4">
           <div class="w-3/4">
-            <img src={takeOnMeCover.src} alt="Take On Me book cover" class="w-full h-auto rounded" />
+            <img src={takeOnMeCover.src} alt="Take On Me book cover" class="w-full h-auto" />
           </div>
         </div>
         <div class="p-6 text-center">
@@ -27,10 +27,10 @@ import lsq062Cover from "../assets/cover-images/062-cover.jpg";
   <!-- Bedtime Stories -->
   <article class="group cursor-pointer">
     <a href="/books/bedtime-stories" class="block">
-      <div class="bg-white rounded-lg overflow-hidden">
+      <div class="bg-white overflow-hidden">
         <div class="flex justify-center p-4">
           <div class="w-3/4">
-            <img src={bedtimeStoriesCover.src} alt="Bedtime Stories book cover" class="w-full h-auto rounded" />
+            <img src={bedtimeStoriesCover.src} alt="Bedtime Stories book cover" class="w-full h-auto" />
           </div>
         </div>
         <div class="p-6 text-center">
@@ -44,10 +44,10 @@ import lsq062Cover from "../assets/cover-images/062-cover.jpg";
   <!-- LSQ Issue 062 -->
   <article class="group cursor-pointer">
     <a href="/books/lsq-issue-062" class="block">
-      <div class="bg-white rounded-lg overflow-hidden">
+      <div class="bg-white overflow-hidden">
         <div class="flex justify-center p-4">
           <div class="w-3/4">
-            <img src={lsq062Cover.src} alt="LSQ Issue 062 cover" class="w-full h-auto rounded" />
+            <img src={lsq062Cover.src} alt="LSQ Issue 062 cover" class="w-full h-auto" />
           </div>
         </div>
         <div class="p-6 text-center">

@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+
+// Get all blog posts to generate categories and archives
+const posts = await getCollection("blog");
+
+// Generate categories dynamically from blog posts
+const categoryMap = new Map();
+posts.forEach(post => {
+  const category = post.data.category;
+  if (category) {
+    const slug = category.toLowerCase().replace(/\s+/g, '-');
+    if (!categoryMap.has(slug)) {
+      categoryMap.set(slug, {
+        name: category,
+        slug: slug,
+        count: 0
+      });
+    }
+    categoryMap.get(slug).count++;
+  }
+});
+
+// Convert to array and sort by name
+const categories = Array.from(categoryMap.values()).sort((a, b) => a.name.localeCompare(b.name));
+
+// Generate archives by month/year
+const archiveMap = new Map();
+posts.forEach(post => {
+  const date = new Date(post.data.pubDate);
+  const monthYear = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+  
+  if (!archiveMap.has(key)) {
+    archiveMap.set(key, {
+      label: monthYear,
+      count: 0,
+      year: date.getFullYear(),
+      month: date.getMonth() + 1
+    });
+  }
+  archiveMap.get(key).count++;
+});
+
+// Convert to array and sort by date (newest first)
+const archives = Array.from(archiveMap.values()).sort((a, b) => {
+  const dateA = new Date(a.year, a.month - 1);
+  const dateB = new Date(b.year, b.month - 1);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<aside class="w-full lg:w-80 lg:pl-8">
+  <!-- Categories Section -->
+  <div class="mb-8">
+    <h3 class="text-xl font-semibold mb-4 text-gray-800">Categories</h3>
+    <ul class="space-y-2">
+      {categories.map(category => (
+        <li>
+          <a 
+            href={`/blog/category/${category.slug}`} 
+            class="text-gray-600 hover:text-blue-600 transition-colors"
+          >
+            {category.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Archives Section -->
+  <div class="mb-8">
+    <h3 class="text-xl font-semibold mb-4 text-gray-800">Archives</h3>
+    <ul class="space-y-2">
+      {archives.map(archive => (
+        <li>
+          <a 
+            href={`/blog/archive/${archive.year}/${String(archive.month).padStart(2, '0')}`} 
+            class="text-gray-600 hover:text-blue-600 transition-colors"
+          >
+            {archive.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>

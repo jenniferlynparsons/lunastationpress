@@ -1,1 +1,36 @@
+/* Typography utilities for widow/orphan prevention */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.prevent-widows {
+  widows: 2;
+  orphans: 2;
+  /* Prevent single words on last lines */
+  hyphens: auto;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Apply widow/orphan prevention to common text elements */
+p, li, blockquote {
+  widows: 2;
+  orphans: 2;
+  /* Better line breaking for readability */
+  hyphens: auto;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Specifically target prose content */
+.prose p {
+  text-wrap: pretty;
+  widows: 3;
+  orphans: 3;
+}
+
 /* Blog post styling */

@@ -8,6 +8,7 @@ pageCount: 230
 amazonLink: "#"
 author: "Jason Martin"
 isbn13: "978-1-938697-48-7"
+imprint: "Chacruna"
 ---
 
 A journey into the mystical realms of consciousness and spiritual awakening.

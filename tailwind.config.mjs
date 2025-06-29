@@ -21,13 +21,11 @@ export default {
 		},
 		colors: {
 			'blue': '#49819b',
-			'amber': '#cfc8b3',
-			'nymph': '#7ba1a2',
+			'green': '#5d8c85',
+			'nymph': '#5d638c',
 			'white': '#ffffff',
 			'black': '#222222',
 			'navy': '#182740',
-			'burnt': '#d67d45',
-			'amber-light': '#f9f7f3',
 		  },
 		fontFamily: {
 			serif: ['Georgia', 'serif'],
@@ -35,12 +33,11 @@ export default {
 		},
 		textColor: {
 			'blue': '#49819b',
-			'amber': '#cfc8b3',
-			'nymph': '#7ba1a2',
+			'green': '#5d8c85',
+			'nymph': '#5d638c',
 			'white': '#ffffff',
 			'black': '#222222',
 			'navy': '#182740',
-			'burnt': '#d67d45',
 		},
 		extend: {
 			typography: {
@@ -60,9 +57,35 @@ export default {
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-		function({ addBase }) {
+		function({ addBase, addUtilities }) {
 			addBase({
 			'h1, h2, h3, h4, h5, h6': { fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif' },
+			})
+			
+			// Add widow/orphan prevention utilities
+			addUtilities({
+				'.text-balance': {
+					'text-wrap': 'balance',
+				},
+				'.text-pretty': {
+					'text-wrap': 'pretty',
+				},
+				'.prevent-widows': {
+					'widows': '2',
+					'orphans': '2',
+				},
+				'.widows-2': {
+					'widows': '2',
+				},
+				'.widows-3': {
+					'widows': '3',
+				},
+				'.orphans-2': {
+					'orphans': '2',
+				},
+				'.orphans-3': {
+					'orphans': '3',
+				},
 			})
 	  	}
 	],

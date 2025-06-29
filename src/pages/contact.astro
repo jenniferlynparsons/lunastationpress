@@ -1,9 +1,9 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import PageHeader from "../components/PageHeader.astro";
-import { SITE_TITLE } from "../consts";
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import PageHeader from "@components/PageHeader.astro";
+import { SITE_TITLE } from "@/consts";
 
 const pageTitle = `Contact | ${SITE_TITLE}`;
 const pageDescription = "Get in touch with Luna Station Press";
@@ -18,12 +18,14 @@ const pageDescription = "Get in touch with Luna Station Press";
     <Header />
 
     <main>
-      <PageHeader title="Contact" backgroundImage="/images/bg_071.jpg" />
+      <PageHeader title="Contact" subtitle="We'd love to hear from you!" backgroundImage="/images/bg_071.jpg" />
 
       <section class="py-16">
         <div class="container mx-auto px-4 max-w-2xl">
           <div class="text-center mb-12">
-            <p class="text-lg text-gray-600">We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.</p>
+            <p class="mb-10 text-lg text-gray-600">Send us a message and we'll get back to you as soon as possible.</p>
+
+            <p>PLEASE NOTE: Luna Station Press is not accepting manuscripts at this time, but we thank you for your interest.</p>
           </div>
 
           <!-- Contact Form -->
@@ -51,7 +53,7 @@ const pageDescription = "Get in touch with Luna Station Press";
             </div>
 
             <div class="text-center">
-              <button type="submit" class="bg-purple-800 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"> Send Message </button>
+              <button type="submit" class="inline-block mt-2 items-center bg-nymph hover:bg-green hover:duration-500 text-white hover:text-white py-3 px-8 rounded focus:outline-none focus:ring no-underline not-prose uppercase text-sm font-medium transition-colors"> Send Message </button>
             </div>
           </form>
         </div>
