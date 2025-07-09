@@ -1,60 +1,42 @@
 ---
-// Latest releases component for home page
-// This will eventually pull from the books content collection
-import takeOnMeCover from "@assets/cover-images/take-on-me-cover.jpg";
-import bedtimeStoriesCover from "@assets/cover-images/bedtimestories-cover.jpg";
-import lsq062Cover from "@assets/cover-images/062-cover.jpg";
+import BookCard from './BookCard.astro';
+
+// Hardcoded featured books for the home page
+// These could eventually pull from the books content collection
+const featuredBooks = [
+  {
+    slug: "take-on-me",
+    data: {
+      title: "Take On Me",
+      author: "Jennifer Lyn Parsons",
+      coverImage: "take-on-me-cover.jpg"
+    }
+  },
+  {
+    slug: "bedtime-stories",
+    data: {
+      title: "Bedtime Stories",
+      author: "Tara Lindsey",
+      coverImage: "bedtimestories-cover.jpg"
+    }
+  },
+  {
+    slug: "best-of-lsq",
+    data: {
+      title: "LSQ Issue 062",
+      author: "Luna Station Quarterly",
+      coverImage: "062-cover.jpg"
+    }
+  }
+];
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <!-- Take On Me -->
-  <article class="group cursor-pointer">
-    <a href="/books/take-on-me" class="block">
-      <div class="bg-white overflow-hidden">
-        <div class="flex justify-center p-4">
-          <div class="w-3/4">
-            <img src={takeOnMeCover.src} alt="Take On Me book cover" class="w-full h-auto" />
-          </div>
-        </div>
-        <div class="p-6 text-center">
-          <h3 class="text-3xl font-semibold mb-2 text-gray-800">Take On Me</h3>
-          <p class="text-sm text-gray-600">by Jennifer Lyn Parsons</p>
-        </div>
-      </div>
-    </a>
-  </article>
-
-  <!-- Bedtime Stories -->
-  <article class="group cursor-pointer">
-    <a href="/books/bedtime-stories" class="block">
-      <div class="bg-white overflow-hidden">
-        <div class="flex justify-center p-4">
-          <div class="w-3/4">
-            <img src={bedtimeStoriesCover.src} alt="Bedtime Stories book cover" class="w-full h-auto" />
-          </div>
-        </div>
-        <div class="p-6 text-center">
-          <h3 class="text-3xl font-semibold mb-2 text-gray-800">Bedtime Stories</h3>
-          <p class="text-sm text-gray-600">by Tara Lindsey</p>
-        </div>
-      </div>
-    </a>
-  </article>
-
-  <!-- LSQ Issue 062 -->
-  <article class="group cursor-pointer">
-    <a href="/books/lsq-issue-062" class="block">
-      <div class="bg-white overflow-hidden">
-        <div class="flex justify-center p-4">
-          <div class="w-3/4">
-            <img src={lsq062Cover.src} alt="LSQ Issue 062 cover" class="w-full h-auto" />
-          </div>
-        </div>
-        <div class="p-6 text-center">
-          <h3 class="text-3xl font-semibold mb-2 text-gray-800">LSQ Issue 062</h3>
-          <p class="text-sm text-gray-600">Luna Station Quarterly</p>
-        </div>
-      </div>
-    </a>
-  </article>
+  {featuredBooks.map((book) => (
+    <BookCard 
+      book={book}
+      variant="featured"
+      showAuthor={true}
+    />
+  ))}
 </div>

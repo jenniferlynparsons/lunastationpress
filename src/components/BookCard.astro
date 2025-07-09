@@ -1,0 +1,136 @@
+---
+import ImageLoader from './ImageLoader.astro';
+
+interface Props {
+  book: any; // Use any for flexibility with different content collection structures
+  variant?: "grid" | "horizontal" | "featured";
+  showBadge?: boolean;
+  showAuthor?: boolean;
+  showTag?: boolean;
+  showReadMore?: boolean;
+  imageClass?: string;
+  titleClass?: string;
+  containerClass?: string;
+}
+
+const {
+  book,
+  variant = "grid",
+  showBadge = false,
+  showAuthor = true,
+  showTag = false,
+  showReadMore = false,
+  imageClass = "",
+  titleClass = "",
+  containerClass = ""
+} = Astro.props;
+
+// Determine image to use and which folder to look in
+let imageToUse = "";
+let imageFolder: "cover-images" | "cover-heros" | "hero-images" = "cover-images";
+
+if (book.data.heroImage) {
+  imageToUse = book.data.heroImage;
+  imageFolder = "cover-heros";
+}
+const altText = `Cover of ${book.data.title}`;
+
+// Handle different variants
+const isGrid = variant === "grid";
+const isHorizontal = variant === "horizontal";
+const isFeatured = variant === "featured";
+---
+
+{isGrid && (
+  <a href={`/books/${book.slug}`} class={`book-item group cursor-pointer block ${containerClass}`} data-genre={book.data.genre}>
+    <div class="relative overflow-hidden">
+      <!-- Book Cover -->
+      <div class="bg-gray-200 overflow-hidden">
+        {imageToUse ? (
+          <ImageLoader 
+            folder={imageFolder}
+            imagePath={imageToUse} 
+            altText={altText}
+            className={`w-full h-auto group-hover:scale-105 transition-transform duration-300 ${imageClass}`}
+            errorMode="warn"
+          />
+        ) : (
+          <div class="w-full h-64 flex items-center justify-center bg-gradient-to-br from-purple-400 to-blue-500 text-white">
+            <span class="text-lg font-bold text-center px-4">{book.data.title}</span>
+          </div>
+        )}
+      </div>
+      
+    </div>
+    
+    <!-- Book Title -->
+    <div class="mt-4 text-center">
+      <h3 class={`text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors ${titleClass}`}>
+        {book.data.title}
+      </h3>
+      {showAuthor && book.data.author && (
+        <p class="text-sm text-gray-600 mt-1">by {book.data.author}</p>
+      )}
+    </div>
+  </a>
+)}
+
+{isHorizontal && (
+  <div class={`flex flex-col sm:flex-row sm:items-start lg:items-start ${containerClass}`}>
+    <div class="w-full sm:w-1/2 mb-4 sm:mb-0 flex justify-center sm:justify-start">
+      <div class="max-w-48 sm:max-w-none">
+        <a href={`/books/${book.slug}/`}>
+          <ImageLoader 
+            folder={imageFolder}
+            imagePath={imageToUse} 
+            altText={altText}
+            className={imageClass}
+            errorMode="warn"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="w-full sm:w-1/2 book-info sm:ml-6 lg:ml-8 text-center sm:text-left">
+      <h3 class={`!mt-0 mb-2 not-prose font-bold text-xl sm:text-2xl text-jlp-burnt ${titleClass}`}>
+        <a href={`/books/${book.slug}/`}>{book.data.title}</a>
+      </h3>
+      {showTag && book.data.tag && (
+        <p class="text-sm sm:text-base">{book.data.tag}</p>
+      )}
+      {showAuthor && book.data.author && (
+        <p class="text-sm sm:text-base text-gray-600">by {book.data.author}</p>
+      )}
+      {showReadMore && (
+        <a class="read-more text-sm sm:text-base" href={`/books/${book.slug}/`}>
+          Learn more →
+        </a>
+      )}
+    </div>
+  </div>
+)}
+
+{isFeatured && (
+  <article class={`group cursor-pointer ${containerClass}`}>
+    <a href={`/books/${book.slug}`} class="block">
+      <div class="bg-white overflow-hidden">
+        <div class="flex justify-center p-4">
+          <div class="w-3/4">
+            <ImageLoader 
+              folder={imageFolder}
+              imagePath={imageToUse} 
+              altText={altText}
+              className={`w-full h-auto ${imageClass}`}
+              errorMode="warn"
+            />
+          </div>
+        </div>
+        <div class="p-6 text-center">
+          <h3 class={`text-3xl font-semibold mb-2 text-gray-800 ${titleClass}`}>{book.data.title}</h3>
+          {showAuthor && book.data.author && (
+            <p class="text-sm text-gray-600">by {book.data.author}</p>
+          )}
+        </div>
+      </div>
+    </a>
+  </article>
+)}

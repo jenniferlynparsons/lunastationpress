@@ -2,7 +2,7 @@
 import Page from "@layouts/Page.astro";
 import { SITE_DESCRIPTION } from "@/consts";
 import { getCollection } from "astro:content";
-import CoverImage from "@components/CoverImage.astro";
+import BookCard from "@components/BookCard.astro";
 
 const books = (await getCollection("books")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -11,24 +11,12 @@ const books = (await getCollection("books")).sort((a, b) => b.data.pubDate.value
   <div class="container mb-20 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl">
     {
       books.map((book) => (
-        <div class="flex flex-col sm:flex-row sm:items-start lg:items-start">
-          <div class="w-full sm:w-1/2 mb-4 sm:mb-0 flex justify-center sm:justify-start">
-            <div class="max-w-48 sm:max-w-none">
-              <a href={`/books/${book.slug}/`}>
-                <CoverImage imagePath={book.data.coverImage ?? ""} altText={`Cover of ${book.data.title}`} />
-              </a>
-            </div>
-          </div>
-          <div class="w-full sm:w-1/2 book-info sm:ml-6 lg:ml-8 text-center sm:text-left">
-            <h3 class="!mt-0 mb-2 not-prose font-bold text-xl sm:text-2xl text-jlp-burnt">
-              <a href={`/books/${book.slug}/`}>{book.data.title}</a>
-            </h3>
-            <p class="text-sm sm:text-base">{book.data.tag}</p>
-            <a class="read-more text-sm sm:text-base" href={`/books/${book.slug}/`}>
-              Learn more →
-            </a>
-          </div>
-        </div>
+        <BookCard 
+          book={book}
+          variant="horizontal"
+          showTag={true}
+          showReadMore={true}
+        />
       ))
     }
   </div>

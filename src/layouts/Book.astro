@@ -10,7 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 type Props = CollectionEntry<"books">["data"];
 
-const { title, pubDate, gumroadLink, weightlessLink, kindleLink, koboLink, coverImage, heroImage, author, amazonLink, payhipLink, itchLink, goodreadsLink, isbn10, isbn13, pageCount, genre, category } = Astro.props;
+const { title, pubDate, gumroad, weightless, kindle, kobo, coverImage, heroImage, author, paperback, payhip, itch, goodreadsLink, isbn10, isbn13, pageCount, genre, category, smashwords } = Astro.props;
 
 // Get related books by the same author
 const allBooks = await getCollection("books");
@@ -70,53 +70,32 @@ if (author) {
         </ul>
       </div>
 
-      <!-- Purchase Links -->
-      <div class="py-6 mb-8">
-        <div class="flex flex-wrap gap-4">
-          {
-            amazonLink && (
-              <a href={amazonLink} class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
-                Paperback
-              </a>
-            )
-          }
-          {
-            (kindleLink || gumroadLink || payhipLink || koboLink || weightlessLink || itchLink) && (
-              <div class="flex flex-wrap gap-2">
-                {kindleLink && (
-                  <a href={kindleLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Kindle
-                  </a>
-                )}
-                {gumroadLink && (
-                  <a href={gumroadLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Gumroad
-                  </a>
-                )}
-                {payhipLink && (
-                  <a href={payhipLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Payhip
-                  </a>
-                )}
-                {koboLink && (
-                  <a href={koboLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Kobo
-                  </a>
-                )}
-                {weightlessLink && (
-                  <a href={weightlessLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Weightless
-                  </a>
-                )}
-                {itchLink && (
-                  <a href={itchLink} class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    itch.io
-                  </a>
-                )}
-              </div>
-            )
-          }
-        </div>
+      <!-- Purchase Links - Text-based Layout -->
+      <div class="py-6 mb-8 text-gray-700 space-y-2">
+        {paperback && (
+          <p>
+            <span class="font-medium">Available in Print:</span> <a href={paperback} class="text-blue-600 hover:text-blue-800 underline">Amazon</a>
+          </p>
+        )}
+        
+        {(kindle || gumroad || payhip || kobo || weightless || itch || smashwords) && (
+          <p>
+            <span class="font-medium">Digital:</span> 
+            {kindle && <a href={kindle} class="text-blue-600 hover:text-blue-800 underline">Kindle</a>}
+            {kindle && (gumroad || payhip || kobo || weightless || itch || smashwords) && <span> | </span>}
+            {gumroad && <a href={gumroad} class="text-blue-600 hover:text-blue-800 underline">Gumroad</a>}
+            {gumroad && (payhip || kobo || weightless || itch || smashwords) && <span> | </span>}
+            {payhip && <a href={payhip} class="text-blue-600 hover:text-blue-800 underline">Payhip</a>}
+            {payhip && (kobo || weightless || itch || smashwords) && <span> | </span>}
+            {kobo && <a href={kobo} class="text-blue-600 hover:text-blue-800 underline">Kobo</a>}
+            {kobo && (weightless || itch || smashwords) && <span> | </span>}
+            {weightless && <a href={weightless} class="text-blue-600 hover:text-blue-800 underline">Weightless</a>}
+            {weightless && (itch || smashwords) && <span> | </span>}
+            {itch && <a href={itch} class="text-blue-600 hover:text-blue-800 underline">itch.io</a>}
+            {itch && smashwords && <span> | </span>}
+            {smashwords && <a href={smashwords} class="text-blue-600 hover:text-blue-800 underline">Smashwords</a>}
+          </p>
+        )}
       </div>
     </div>
   </div>

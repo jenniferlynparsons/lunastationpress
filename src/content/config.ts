@@ -20,26 +20,32 @@ const books = defineCollection({
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
+		author: z.string().optional(),
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
+		pageCount: z.number().optional().nullable(),
+		
 		coverImage: z.string().optional(),
 		heroImage: z.string().optional(),
-		author: z.string().optional(),
-		amazonLink: z.string().optional().nullable(),
-		gumroadLink: z.string().optional().nullable(),
-		weightlessLink: z.string().optional().nullable(),
-		koboLink: z.string().optional().nullable(),
-		kindleLink: z.string().optional().nullable(),
-		goodreadsLink: z.string().optional().nullable(),
-		isbn10: z.string().optional().nullable(),
-		isbn13: z.string().optional().nullable(),
-		payhipLink: z.string().optional().nullable(),
-		itchLink: z.string().optional().nullable(),
-		pageCount: z.number().optional().nullable(),
-		genre: z.string().optional().nullable(),
+		
 		category: z.string().optional().nullable(),
-		tag: z.string().optional().nullable(),
+		genre: z.string().optional().nullable(),
+		
+		isbn13: z.string().optional().nullable(),
+		isbn10: z.string().optional().nullable(),
+		
+		// Purchase links
+		paperback: z.string().optional().nullable(),
+		gumroad: z.string().optional().nullable(),
+		itch: z.string().optional().nullable(),
+		kindle: z.string().optional().nullable(),
+		weightless: z.string().optional().nullable(),
+		smashwords: z.string().optional().nullable(),
+		kobo: z.string().optional().nullable(),
+		payhip: z.string().optional().nullable(),
+		
 		imprint: z.string().optional().nullable(),
+		tag: z.string().optional().nullable(),
 	}),
 });
 
