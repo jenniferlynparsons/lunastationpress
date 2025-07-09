@@ -1,15 +1,33 @@
 ---
 title: "Invisible Compositions"
-pubDate: 2015-05-01
+author: "Tara Quinn Lindsey"
+pubDate: 2015-05-02
+pageCount: 194
+
 coverImage: "invisible-compositions.jpg"
+heroImage: "invisible-compositions-hero.jpg"
+
 category: "Poetry"
 genre: "Poetry"
-pageCount: 194
-amazonLink: "#"
-heroImage: "invisible-compositions-hero.jpg"
-author: "Tara Quinn Lindsey"
-isbn13: "978-1-938697-56-2"
+
+isbn13: "978-1-938697-60-9"
+
+# purchase links
+paperback: ""
+gumroad: ""
+itch: ""
+kindle: ""
+weightless: ""
+smashwords: ""
+kobo: ""
+payhip: ""
 ---
 
-A haunting collection of contemporary poetry exploring the unseen world around us.
+“You are opener. You are maker. You can be invisible, but you shouldn’t be. You can be invulnerable, but you needn’t be. And you can fly. Always remember, you can fly.”
+from The Book of Apples :: Stave 7, Verse 3
 
+With Invisible Compositions, Tara Lindsey continues & expands upon the poetic hypernarrative begun in The Esbat Sequence and sQualor // gLamour.
+
+Part ritual, part exotic travelogue, part love story, part autobiography of a much visited parallel universe, these poems clothe themselves in the language of time travel, floating trees, holographic entities, and other wonders, while simultaneously suggesting deeper, simpler, timeless themes of love, longing and loss.
+
+These are poems for the people of the future. They are also for you, if you are brave enough. Once again, you have been warned.

@@ -1,15 +1,28 @@
 ---
 title: "The Man Who Walked"
-pubDate: 2016-05-07
-coverImage: "the-man-who-walked.jpg"
-category: "Sci-Fi & Fantasy"
-genre: "Fantasy"
-pageCount: 168
-amazonLink: "#"
-heroImage: "the-man-who-walked-hero.jpg"
 author: "Jennifer Lyn Parsons"
+pubDate: 2016-05-07
+pageCount: 168
+
+coverImage: "the-man-who-walked.jpg"
+heroImage: "the-man-who-walked-hero.jpg"
+
+category: "Fantasy"
+genre: "Fiction"
+
 isbn13: "978-1-938697-64-7"
+
+# purchase links
+paperback: ""
+gumroad: ""
+itch: ""
+kindle: ""
+weightless: ""
+smashwords: ""
+kobo: ""
+payhip: ""
 ---
 
-A journey through space and time in this captivating science fiction tale.
+This is a book plucked out of time. It has always been there. You have always known it. In your quiet moments. When the wind and the sky are just so. Tales (and a poem!) of old gods and older truths, of subtle adventure, of love and cooking and, of course, walking.
 
+This is a book of memory, and it’s calling you home.

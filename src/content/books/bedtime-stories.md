@@ -1,14 +1,26 @@
 ---
 title: "Bedtime Stories (for Insouciant Alchemists)"
+author: "Tara Quinn Lindsey"
 pubDate: 2016-11-01
+pageCount: 406
+
 coverImage: "bedtimestories-cover.jpg"
+heroImage: "bedtime-stories-for-insouciant-alchemists-hero.jpg"
+
 category: "New Release"
 genre: "Poetry"
-pageCount: 406
-amazonLink: "#"
-heroImage: "bedtime-stories-for-insouciant-alchemists-hero.jpg"
-author: "Tara Quinn Lindsey"
+
 isbn13: "978-1-938697-70-8"
+
+# purchase links
+paperback: ""
+gumroad: ""
+itch: ""
+kindle: ""
+weightless: ""
+smashwords: ""
+kobo: ""
+payhip: ""
 ---
 
 These five line poems, inspired by, but not beholden to, Japanese tanka, are prayerseeds for the people of the future. Like Rilke’s Book of Hours or Sonnets to Orpheus, (or possibly a rogue patch in Stevenson’s Garden) they are an imaginary hymnal, by turns deeply personal and wholly universal.
