@@ -46,6 +46,9 @@ const books = defineCollection({
 		
 		imprint: z.string().optional().nullable(),
 		tag: z.string().optional().nullable(),
+		
+		// New release flag
+		newRelease: z.boolean().optional().default(false),
 	}),
 });
 

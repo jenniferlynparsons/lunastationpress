@@ -1,34 +1,22 @@
 ---
 import BookCard from './BookCard.astro';
+import { getCollection } from 'astro:content';
 
-// Hardcoded featured books for the home page
-// These could eventually pull from the books content collection
-const featuredBooks = [
-  {
-    slug: "take-on-me",
-    data: {
-      title: "Take On Me",
-      author: "Jennifer Lyn Parsons",
-      coverImage: "take-on-me-cover.jpg"
-    }
-  },
-  {
-    slug: "bedtime-stories",
-    data: {
-      title: "Bedtime Stories",
-      author: "Tara Lindsey",
-      coverImage: "bedtimestories-cover.jpg"
-    }
-  },
-  {
-    slug: "best-of-lsq",
-    data: {
-      title: "LSQ Issue 062",
-      author: "Luna Station Quarterly",
-      coverImage: "062-cover.jpg"
-    }
-  }
-];
+// Get all books from the content collection
+const allBooks = await getCollection('books');
+
+// Get books marked as new releases
+const newReleases = allBooks
+  .filter(book => book.data.newRelease)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+// If no books marked as new releases, fall back to the 3 most recent books
+const featuredBooks = newReleases.length > 0 
+  ? newReleases 
+  : allBooks
+      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+      .slice(0, 3);
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -37,6 +25,8 @@ const featuredBooks = [
       book={book}
       variant="featured"
       showAuthor={true}
+      showBadge={book.data.newRelease}
+      preferCoverImage={true}
     />
   ))}
 </div>

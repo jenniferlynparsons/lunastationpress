@@ -13,7 +13,7 @@ genre: "Poetry"
 isbn13: "978-1-938697-70-8"
 
 # purchase links
-paperback: ""
+paperback: "https://www.amazon.com/Bedtime-Stories-Insouciant-Alchemists-Lindsey/dp/1938697707"
 gumroad: ""
 itch: ""
 kindle: ""

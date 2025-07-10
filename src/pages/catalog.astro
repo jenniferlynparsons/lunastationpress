@@ -6,12 +6,12 @@ import BookCard from "@components/BookCard.astro";
 import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
 
-
 const pageTitle = `Catalog | ${SITE_TITLE}`;
 const pageDescription = "Browse our complete catalog of books and publications from Luna Station Press";
 
 let books: any[] = [];
 let genres: string[] = [];
+let booksWithBadges: Set<string> = new Set();
 
 try {
   // Get all books and sort by publication date (newest first)
@@ -20,6 +20,17 @@ try {
   
   // Get unique genres for filtering
   genres = [...new Set(books.map(book => book.data.genre).filter(Boolean))];
+  
+  // Determine which books should show badges
+  const newReleases = books.filter(book => book.data.newRelease);
+  
+  if (newReleases.length > 0) {
+    // Show badges on books marked as new releases
+    newReleases.forEach(book => booksWithBadges.add(book.slug));
+  } else {
+    // Fallback: show badges on 3 most recent books
+    books.slice(0, 3).forEach(book => booksWithBadges.add(book.slug));
+  }
 } catch (error) {
   console.error("Error loading books:", error);
 }
@@ -60,7 +71,7 @@ try {
               <BookCard 
                 book={book}
                 variant="grid"
-                showBadge={true}
+                showBadge={booksWithBadges.has(book.slug)}
                 showAuthor={false}
                 containerClass="book-item"
               />

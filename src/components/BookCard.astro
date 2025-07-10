@@ -11,6 +11,7 @@ interface Props {
   imageClass?: string;
   titleClass?: string;
   containerClass?: string;
+  preferCoverImage?: boolean;
 }
 
 const {
@@ -22,16 +23,26 @@ const {
   showReadMore = false,
   imageClass = "",
   titleClass = "",
-  containerClass = ""
+  containerClass = "",
+  preferCoverImage = false
 } = Astro.props;
 
 // Determine image to use and which folder to look in
 let imageToUse = "";
 let imageFolder: "cover-images" | "cover-heros" | "hero-images" = "cover-images";
 
-if (book.data.heroImage) {
+if (preferCoverImage) {
+  // Force use of cover image even if hero image exists
+  imageToUse = book.data.coverImage;
+  imageFolder = "cover-images";
+} else if (book.data.heroImage) {
+  // Use hero image if available and not forcing cover image
   imageToUse = book.data.heroImage;
   imageFolder = "cover-heros";
+} else {
+  // Default to cover image
+  imageToUse = book.data.coverImage;
+  imageFolder = "cover-images";
 }
 const altText = `Cover of ${book.data.title}`;
 
@@ -61,6 +72,14 @@ const isFeatured = variant === "featured";
         )}
       </div>
       
+      <!-- New Release Badge -->
+      {showBadge && (
+        <div class="absolute left-[-45px] top-[20px] bg-blue text-white px-10 py-1 transform -rotate-45">
+          <span class=" text-white text-xs font-bold  whitespace-nowrap">
+            New Release
+          </span>
+        </div>
+      )}
     </div>
     
     <!-- Book Title -->
@@ -78,7 +97,7 @@ const isFeatured = variant === "featured";
 {isHorizontal && (
   <div class={`flex flex-col sm:flex-row sm:items-start lg:items-start ${containerClass}`}>
     <div class="w-full sm:w-1/2 mb-4 sm:mb-0 flex justify-center sm:justify-start">
-      <div class="max-w-48 sm:max-w-none">
+      <div class="max-w-48 sm:max-w-none relative">
         <a href={`/books/${book.slug}/`}>
           <ImageLoader 
             folder={imageFolder}
@@ -88,6 +107,14 @@ const isFeatured = variant === "featured";
             errorMode="warn"
           />
         </a>
+        <!-- New Release Badge -->
+        {showBadge && (
+          <div class="absolute top-0 left-0 w-0 h-0 border-t-[60px] border-r-[60px] border-t-blue-500 border-r-transparent">
+            <span class="absolute -top-12 left-1 text-white text-xs font-bold transform -rotate-45 whitespace-nowrap">
+              New Release
+            </span>
+          </div>
+        )}
       </div>
     </div>
     <div class="w-full sm:w-1/2 book-info sm:ml-6 lg:ml-8 text-center sm:text-left">
@@ -112,7 +139,7 @@ const isFeatured = variant === "featured";
 {isFeatured && (
   <article class={`group cursor-pointer ${containerClass}`}>
     <a href={`/books/${book.slug}`} class="block">
-      <div class="bg-white overflow-hidden">
+      <div class="bg-white overflow-hidden relative">
         <div class="flex justify-center p-4">
           <div class="w-3/4">
             <ImageLoader 
@@ -124,6 +151,14 @@ const isFeatured = variant === "featured";
             />
           </div>
         </div>
+        <!-- New Release Badge -->
+        {showBadge && (
+          <div class="absolute top-0 left-0 w-0 h-0 border-t-[60px] border-r-[60px] border-t-blue-500 border-r-transparent">
+            <span class="absolute -top-12 left-1 text-white text-xs font-bold transform -rotate-45 whitespace-nowrap">
+              New Release
+            </span>
+          </div>
+        )}
         <div class="p-6 text-center">
           <h3 class={`text-3xl font-semibold mb-2 text-gray-800 ${titleClass}`}>{book.data.title}</h3>
           {showAuthor && book.data.author && (

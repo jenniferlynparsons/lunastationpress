@@ -13,7 +13,7 @@ genre: "Poetry"
 isbn13: "978-1-938697-60-9"
 
 # purchase links
-paperback: ""
+paperback: "http://www.amazon.com/Invisible-Compositions-Tara-Lindsey/dp/193869760X"
 gumroad: ""
 itch: ""
 kindle: ""

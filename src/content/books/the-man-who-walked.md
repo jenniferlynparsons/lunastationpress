@@ -13,10 +13,10 @@ genre: "Fiction"
 isbn13: "978-1-938697-64-7"
 
 # purchase links
-paperback: ""
+paperback: "http://www.amazon.com/Man-Who-Walked-Other-Fantastic/dp/1938697642"
 gumroad: ""
 itch: ""
-kindle: ""
+kindle: "https://www.amazon.com/dp/B07L22D1P3"
 weightless: ""
 smashwords: ""
 kobo: ""
