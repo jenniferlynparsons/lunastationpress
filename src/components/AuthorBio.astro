@@ -20,30 +20,30 @@ if (photoUrl) {
 }
 ---
 
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+<div class="max-w-6xl mx-auto px-12 py-12 sm:px-6 lg:px-12 mb-20 bg-nymph text-white">
   <div class="flex flex-col md:flex-row items-start gap-8">
     <div class="flex-shrink-0">
       {
         authorPhoto ? (
           <img src={authorPhoto.default.src} alt={`Photo of ${author}`} class="w-60 object-cover " />
         ) : (
-          <div class="w-60 bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-500 text-sm">Photo</span>
+          <div class="w-60  flex items-center justify-center">
+            <span class=" text-sm">Photo</span>
           </div>
         )
       }
     </div>
     <div class="flex-grow">
-      <h2 class="text-2xl font-semibold mb-4 text-gray-800">{author}</h2>
-      <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed mb-4">
-        <p set:html={displayBio} />
+      <h2 class="text-2xl font-semibold mb-4">{author}</h2>
+      <div class="prose max-w-none leading-relaxed mb-4 text-white">
+        <div set:html={displayBio} />
       </div>
 
       <!-- Website Link -->
       {
         website && (
           <div class="mb-4">
-            <a href={website} class="text-blue-600" target="_blank" rel="noopener noreferrer">
+            <a href={website} class="text-white" target="_blank" rel="noopener noreferrer">
               Visit {author}'s website
             </a>
           </div>

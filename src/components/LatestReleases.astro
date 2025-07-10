@@ -1,22 +1,33 @@
 ---
 import BookCard from './BookCard.astro';
 import { getCollection } from 'astro:content';
+import { currentQuarterly } from '../config/quarterly';
 
 // Get all books from the content collection
 const allBooks = await getCollection('books');
 
-// Get books marked as featured on home page
+// Get books marked as featured on home page (only 2)
 const homePageFeatured = allBooks
   .filter(book => book.data.featuredOnHome)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
+  .slice(0, 2);
 
-// If no books marked as featured, fall back to the 3 most recent books
+// If no books marked as featured, fall back to the 2 most recent books
 const featuredBooks = homePageFeatured.length > 0 
   ? homePageFeatured 
   : allBooks
       .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-      .slice(0, 3);
+      .slice(0, 2);
+
+// Create Luna Station Quarterly mock book object for third slot
+const lunaStationQuarterly = {
+  slug: 'quarterly', // This will be used to link to /quarterly
+  data: {
+    title: currentQuarterly.title,
+    author: `Issue ${currentQuarterly.issueNumber}`,
+    coverImage: currentQuarterly.coverImage
+  }
+};
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -28,4 +39,11 @@ const featuredBooks = homePageFeatured.length > 0
       preferCoverImage={true}
     />
   ))}
+  <!-- Luna Station Quarterly -->
+  <BookCard 
+    book={lunaStationQuarterly}
+    variant="featured"
+    showAuthor={true}
+    preferCoverImage={true}
+  />
 </div>
