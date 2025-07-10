@@ -21,6 +21,8 @@ weightless: ""
 smashwords: ""
 kobo: ""
 payhip: ""
+
+featuredOnHome: true
 ---
 
 These five line poems, inspired by, but not beholden to, Japanese tanka, are prayerseeds for the people of the future. Like Rilke’s Book of Hours or Sonnets to Orpheus, (or possibly a rogue patch in Stevenson’s Garden) they are an imaginary hymnal, by turns deeply personal and wholly universal.

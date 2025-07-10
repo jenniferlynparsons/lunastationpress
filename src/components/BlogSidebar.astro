@@ -59,7 +59,7 @@ const archives = Array.from(archiveMap.values()).sort((a, b) => {
         <li>
           <a 
             href={`/blog/category/${category.slug}`} 
-            class="text-gray-600 hover:text-blue-600 transition-colors"
+            class="text-gray-600 "
           >
             {category.name}
           </a>
@@ -76,7 +76,7 @@ const archives = Array.from(archiveMap.values()).sort((a, b) => {
         <li>
           <a 
             href={`/blog/archive/${archive.year}/${String(archive.month).padStart(2, '0')}`} 
-            class="text-gray-600 hover:text-blue-600 transition-colors"
+            class="text-gray-600 "
           >
             {archive.label}
           </a>

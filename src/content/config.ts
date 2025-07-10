@@ -49,6 +49,9 @@ const books = defineCollection({
 		
 		// New release flag
 		newRelease: z.boolean().optional().default(false),
+		
+		// Featured on home page flag
+		featuredOnHome: z.boolean().optional().default(false),
 	}),
 });
 

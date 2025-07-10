@@ -1,7 +1,6 @@
 ---
 import PageContainer from "@components/PageContainer.astro";
 import PageHeader from "@components/PageHeader.astro";
-import BookBanner from "@components/BookBanner.astro";
 import BookCard from "@components/BookCard.astro";
 import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
@@ -56,11 +55,19 @@ try {
           <!-- Genre Filter -->
           <div class="mb-12">
             <div class="flex justify-center">
-              <div class="bg-gray-50  p-2 inline-flex flex-wrap gap-2">
-                <BookBanner category="all" label="📚 All Items" isActive={true} />
-                {genres.map(genre => (
-                  <BookBanner category={genre} label={genre} />
-                ))}
+              <div class="flex items-center gap-3">
+                <label for="genre-filter" class="text-sm font-medium text-gray-700">
+                  Filter by Genre:
+                </label>
+                <select 
+                  id="genre-filter" 
+                  class="px-4 py-2 border border-gray-300 rounded-md bg-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-w-[180px]"
+                >
+                  <option value="all">📚 All Books</option>
+                  {genres.map(genre => (
+                    <option value={genre}>{genre}</option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
@@ -85,32 +92,23 @@ try {
   <script is:inline>
     // Genre filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const filterButtons = document.querySelectorAll('.filter-btn');
+      const genreFilter = document.getElementById('genre-filter');
       const bookItems = document.querySelectorAll('.book-item');
 
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const category = this.dataset.category;
+      if (genreFilter) {
+        genreFilter.addEventListener('change', function() {
+          const selectedGenre = this.value;
           
-          // Update active button
-          filterButtons.forEach(btn => {
-            btn.classList.remove('active', 'bg-white', 'shadow-sm', 'text-gray-900');
-            btn.classList.add('text-gray-600');
-          });
-          
-          this.classList.add('active', 'bg-white', 'shadow-sm', 'text-gray-900');
-          this.classList.remove('text-gray-600');
-          
-          // Filter books
+          // Filter books based on selected genre
           bookItems.forEach(item => {
-            if (category === 'all' || item.dataset.genre === category) {
+            if (selectedGenre === 'all' || item.dataset.genre === selectedGenre) {
               item.style.display = 'block';
             } else {
               item.style.display = 'none';
             }
           });
         });
-      });
+      }
     });
   </script>
 </PageContainer>

@@ -62,7 +62,7 @@ const getPageUrl = (pageNum: number) => {
     {page.url.prev ? (
       <a 
         href={page.url.prev} 
-        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 transition-colors"
+        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
         aria-label="Previous page"
       >
         Previous
@@ -88,7 +88,7 @@ const getPageUrl = (pageNum: number) => {
         ) : (
           <a 
             href={getPageUrl(pageNum as number)} 
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 transition-colors"
+            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
             aria-label={`Go to page ${pageNum}`}
           >
             {pageNum}
@@ -101,7 +101,7 @@ const getPageUrl = (pageNum: number) => {
     {page.url.next ? (
       <a 
         href={page.url.next} 
-        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 transition-colors"
+        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
         aria-label="Next page"
       >
         Next

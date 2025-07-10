@@ -5,15 +5,15 @@ import { getCollection } from 'astro:content';
 // Get all books from the content collection
 const allBooks = await getCollection('books');
 
-// Get books marked as new releases
-const newReleases = allBooks
-  .filter(book => book.data.newRelease)
+// Get books marked as featured on home page
+const homePageFeatured = allBooks
+  .filter(book => book.data.featuredOnHome)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-// If no books marked as new releases, fall back to the 3 most recent books
-const featuredBooks = newReleases.length > 0 
-  ? newReleases 
+// If no books marked as featured, fall back to the 3 most recent books
+const featuredBooks = homePageFeatured.length > 0 
+  ? homePageFeatured 
   : allBooks
       .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
       .slice(0, 3);
@@ -25,7 +25,6 @@ const featuredBooks = newReleases.length > 0
       book={book}
       variant="featured"
       showAuthor={true}
-      showBadge={book.data.newRelease}
       preferCoverImage={true}
     />
   ))}

@@ -8,7 +8,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 <a
   href={href}
   class={`
-    text-white hover:text-orange-200 transition-colors duration-300 
+    text-white 
     ${isActive ? "text-orange-300 border-b border-orange-300" : ""}
     ${className}
   `}
