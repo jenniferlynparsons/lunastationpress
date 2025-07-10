@@ -61,7 +61,7 @@ if (author) {
           paperback && (
             <div>
               <span class="font-medium">Available in Print:</span>{" "}
-              <a href={paperback} class="text-blue-600 hover:text-blue-800 underline">
+              <a href={paperback} class="text-nymph hover:text-green underline">
                 Amazon
               </a>
             </div>
@@ -73,43 +73,43 @@ if (author) {
             <div>
               <span class="font-medium">Digital:</span>
               {kindle && (
-                <a href={kindle} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={kindle} class="text-nymph hover:text-green underline">
                   Kindle
                 </a>
               )}
-              {kindle && (gumroad || payhip || kobo || weightless || itch || smashwords) && <span> | </span>}
+              {kindle && (gumroad || payhip || kobo || weightless || itch || smashwords) && <span>&nbsp;| </span>}
               {gumroad && (
-                <a href={gumroad} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={gumroad} class="text-nymph hover:text-green underline">
                   Gumroad
                 </a>
               )}
-              {gumroad && (payhip || kobo || weightless || itch || smashwords) && <span> | </span>}
+              {gumroad && (payhip || kobo || weightless || itch || smashwords) && <span>&nbsp;| </span>}
               {payhip && (
-                <a href={payhip} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={payhip} class="text-nymph hover:text-green underline">
                   Payhip
                 </a>
               )}
-              {payhip && (kobo || weightless || itch || smashwords) && <span> | </span>}
+              {payhip && (kobo || weightless || itch || smashwords) && <span>&nbsp;| </span>}
               {kobo && (
-                <a href={kobo} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={kobo} class="text-nymph hover:text-green underline">
                   Kobo
                 </a>
               )}
-              {kobo && (weightless || itch || smashwords) && <span> | </span>}
+              {kobo && (weightless || itch || smashwords) && <span>&nbsp;| </span>}
               {weightless && (
-                <a href={weightless} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={weightless} class="text-nymph hover:text-green underline">
                   Weightless
                 </a>
               )}
-              {weightless && (itch || smashwords) && <span> | </span>}
+              {weightless && (itch || smashwords) && <span>&nbsp;| </span>}
               {itch && (
-                <a href={itch} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={itch} class="text-nymph hover:text-green underline">
                   itch.io
                 </a>
               )}
-              {itch && smashwords && <span> | </span>}
+              {itch && smashwords && <span>&nbsp;| </span>}
               {smashwords && (
-                <a href={smashwords} class="text-blue-600 hover:text-blue-800 underline">
+                <a href={smashwords} class="text-nymph hover:text-green underline">
                   Smashwords
                 </a>
               )}
@@ -127,7 +127,7 @@ if (author) {
       </div>
 
       <!-- Divider -->
-      <div class="border-t border-gray-200 mb-8"></div>
+      <div class="border-t border-nymph mb-8"></div>
 
       <!-- Book Metadata -->
       <div class="mb-8">
