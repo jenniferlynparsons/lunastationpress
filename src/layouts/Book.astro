@@ -10,7 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 type Props = CollectionEntry<"books">["data"];
 
-const { title, pubDate, gumroad, weightless, kindle, kobo, coverImage, heroImage, author, paperback, payhip, itch, goodreadsLink, isbn10, isbn13, pageCount, genre, category, smashwords } = Astro.props;
+const { title, pubDate, gumroad, weightless, kindle, kobo, coverImage, heroImage, author, paperback, payhip, itch, isbn13, pageCount, genre, smashwords } = Astro.props;
 
 // Get related books by the same author
 const allBooks = await getCollection("books");
@@ -27,7 +27,7 @@ if (author) {
       return authorEntry.data.name === author || authorEntry.slug === authorSlug;
     });
   } catch (error) {
-    console.log("Authors collection not found or error fetching author data:", error);
+    // Silently handle missing author data
   }
 }
 ---

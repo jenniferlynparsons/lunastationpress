@@ -7,7 +7,7 @@ const { title, backgroundImage, subtitle } = Astro.props;
   {
     backgroundImage && (
       <div class="absolute inset-0 z-0">
-        <img src={backgroundImage} alt="" class="w-full h-full object-cover" />
+        <img src={backgroundImage} alt="" class="w-full h-full object-cover" loading="eager" decoding="async" />
         <div class="absolute inset-0 bg-black bg-opacity-50" />
       </div>
     )

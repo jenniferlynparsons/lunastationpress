@@ -15,7 +15,7 @@ if (photoUrl) {
       authorPhoto = await photos[photoPath]();
     }
   } catch (error) {
-    console.warn(`Could not load author photo: ${photoUrl}`);
+    // Component already handles missing photos gracefully
   }
 }
 ---
@@ -25,7 +25,7 @@ if (photoUrl) {
     <div class="flex-shrink-0">
       {
         authorPhoto ? (
-          <img src={authorPhoto.default.src} alt={`Photo of ${author}`} class="w-60 object-cover " />
+          <img src={authorPhoto.default.src} alt={`Photo of ${author}`} class="w-60 object-cover " loading="lazy" decoding="async" />
         ) : (
           <div class="w-60  flex items-center justify-center">
             <span class=" text-sm">Photo</span>

@@ -2,10 +2,9 @@
 import { SITE_TITLE } from "../consts";
 import SocialMediaIcon from "./SocialMediaIcon.astro";
 
-const today = new Date();
 ---
 
-<footer class="bg-black text-white relative overflow-hidden">
+<footer class="bg-black text-white relative overflow-hidden" role="contentinfo">
   <!-- Background pattern -->
   <div class="absolute inset-0 opacity-5">
     <div class="w-full h-full" style="background-image: url('/images/bg_031.png'); background-repeat: repeat;"></div>
@@ -18,11 +17,11 @@ const today = new Date();
       <div class="flex flex-col items-center text-center max-w-2xl mx-auto">
         <!-- Logo -->
         <a href="/" class="mb-6">
-          <img src="/images/logo.png" alt={SITE_TITLE} class="h-12 w-auto opacity-90" />
+          <img src="/images/logo.png" alt={SITE_TITLE} class="h-12 w-auto opacity-90" loading="lazy" decoding="async" />
         </a>
 
         <!-- Social Links -->
-        <div class="flex space-x-6 mb-8">
+        <div class="flex space-x-6 mb-8" role="navigation" aria-label="Social media links">
           <SocialMediaIcon href="https://www.facebook.com/LunaStationPress" platform="facebook" label="Facebook" />
           <SocialMediaIcon href="http://twitter.com/lunastnpress" platform="twitter" label="Twitter" />
           <SocialMediaIcon href="http://lunastationpress.tumblr.com/" platform="tumblr" label="Tumblr" />

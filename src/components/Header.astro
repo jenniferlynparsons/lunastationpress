@@ -5,19 +5,19 @@ const { showHero = false } = Astro.props;
 ---
 
 <!-- Header with conditional hero content -->
-<header class={`relative ${showHero ? "min-h-screen bg-cover bg-center bg-no-repeat" : ""}`} style={showHero ? "background-image: url('/images/bg_13_big.jpg');" : ""}>
+<header class={`relative ${showHero ? "min-h-screen bg-cover bg-center bg-no-repeat" : ""}`} style={showHero ? "background-image: url('/images/bg_13_big.jpg');" : ""} role="banner">
   <!-- Light overlay for better text contrast while preserving background -->
   {showHero && <div class="absolute inset-0 bg-black bg-opacity-20" />}
 
   <div class="relative z-10">
     <!-- Top Navigation Bar -->
-    <nav class="w-full bg-black">
+    <nav class="w-full bg-black" role="navigation" aria-label="Main navigation">
       <div class="container mx-auto px-4 py-6">
         <div class="flex items-center justify-between">
           <!-- Logo/Brand -->
           <a href="/" class="flex items-center space-x-3 text-white">
             <!-- Decorative symbol (using a simple star for now, can be replaced with custom icon) -->
-            <img src="/images/logo.png" alt="Luna Station Press" class="h-8 md:h-10" />
+            <img src="/images/logo.png" alt="Luna Station Press" class="h-8 md:h-10" loading="eager" decoding="async" />
           </a>
 
           <!-- Desktop Navigation -->
@@ -34,8 +34,8 @@ const { showHero = false } = Astro.props;
           <!-- Mobile Menu -->
           <div class="flex items-center space-x-4">
             <!-- Mobile menu button -->
-            <button id="mobile-menu-button" class="lg:hidden p-2 text-white focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="mobile-menu-button" class="lg:hidden p-2 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>

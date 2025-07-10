@@ -26,7 +26,7 @@ if (!imagePath) {
   if (errorMode === "throw") {
     throw new Error(message);
   } else if (errorMode === "warn") {
-    console.warn(message);
+    // Component already handles graceful fallback
   }
   // Return null fragment if no image path and not throwing
   return null;
@@ -48,7 +48,7 @@ if (!imageExists) {
   if (errorMode === "throw") {
     throw new Error(message);
   } else if (errorMode === "warn") {
-    console.warn(message);
+    // Component already handles graceful fallback
   }
   
   // Return null if image doesn't exist and we're not throwing
@@ -64,4 +64,5 @@ const imageModule = await imageExists();
   alt={altText} 
   class={className}
   loading={loading}
+  decoding="async"
 />

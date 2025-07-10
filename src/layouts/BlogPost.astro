@@ -9,7 +9,7 @@ import { SITE_TITLE } from "@/consts";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, heroImage, heroAltText, pubDate, author, category } = Astro.props;
+const { title, pubDate, author } = Astro.props;
 
 const pageTitle = `${title} | ${SITE_TITLE}`;
 const pageDescription = `Blog post: ${title}`;
