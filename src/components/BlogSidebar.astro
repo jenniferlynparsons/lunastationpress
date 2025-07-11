@@ -51,16 +51,16 @@ const archives = Array.from(archiveMap.values()).sort((a, b) => {
 ---
 
 <aside class="w-full lg:w-80 lg:ml-8 mt-8 lg:mt-0">
-  <div class="bg-nymph text-white p-6">
+  <div class="bg-gray-100 p-4 sm:p-5 lg:p-6">
     <!-- Categories Section -->
     <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-4 text-white">Categories</h3>
+      <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-4">Categories</h3>
       <ul class="space-y-2">
         {categories.map(category => (
           <li>
             <a 
               href={`/blog/category/${category.slug}`} 
-              class="text-white hover:opacity-80 transition-opacity duration-200"
+              class="text-gray-700 hover:text-gray-900 transition-colors duration-200"
             >
               {category.name}
             </a>
@@ -71,13 +71,13 @@ const archives = Array.from(archiveMap.values()).sort((a, b) => {
     
     <!-- Archives Section -->
     <div class="mb-0">
-      <h3 class="text-xl font-semibold mb-4 text-white">Archives</h3>
+      <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-4">Archives</h3>
       <ul class="space-y-2">
         {archives.map(archive => (
           <li>
             <a 
               href={`/blog/archive/${archive.year}/${String(archive.month).padStart(2, '0')}`} 
-              class="text-white hover:opacity-80 transition-opacity duration-200"
+              class="text-gray-700 hover:text-gray-900 transition-colors duration-200"
             >
               {archive.label}
             </a>
