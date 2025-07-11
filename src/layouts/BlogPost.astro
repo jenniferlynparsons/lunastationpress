@@ -20,7 +20,7 @@ const pageDescription = `Blog post: ${title}`;
   <head>
     <BaseHead title={pageTitle} description={pageDescription} />
   </head>
-  <body class="bg-white">
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
     <Header />
 
     <main>
@@ -30,13 +30,13 @@ const pageDescription = `Blog post: ${title}`;
             <!-- Main Content -->
             <article class="flex-1 lg:w-2/3">
               <header class="mb-8">
-                <h1 class="text-3xl md:text-4xl font-light text-gray-800 mb-4">{title}</h1>
-                <div class="text-sm text-gray-500 mb-6">
+                <h1 class="text-3xl md:text-4xl font-light text-gray-800 dark:text-gray-100 mb-4">{title}</h1>
+                <div class="text-sm text-gray-500 dark:text-gray-400 mb-6">
                   By {author} / <FormattedDate date={pubDate} />
                 </div>
               </header>
 
-              <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+              <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
                 <slot />
               </div>
             </article>

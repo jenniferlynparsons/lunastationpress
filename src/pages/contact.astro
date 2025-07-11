@@ -14,7 +14,7 @@ const pageDescription = "Get in touch with Luna Station Press";
   <head>
     <BaseHead title={pageTitle} description={pageDescription} />
   </head>
-  <body class="bg-white">
+  <body class="bg-white dark:bg-gray-900">
     <Header />
 
     <main>
@@ -23,33 +23,33 @@ const pageDescription = "Get in touch with Luna Station Press";
       <section class="py-16">
         <div class="container mx-auto px-4 max-w-2xl">
           <div class="text-center mb-12">
-            <p class="mb-10 text-lg text-gray-600">Send us a message and we'll get back to you as soon as possible.</p>
+            <p class="mb-10 text-lg text-gray-600 dark:text-gray-300">Send us a message and we'll get back to you as soon as possible.</p>
 
-            <p>PLEASE NOTE: Luna Station Press is not accepting manuscripts at this time, but we thank you for your interest.</p>
+            <p class="text-gray-800 dark:text-gray-200">PLEASE NOTE: Luna Station Press is not accepting manuscripts at this time, but we thank you for your interest.</p>
           </div>
 
           <!-- Contact Form -->
           <form class="space-y-6" method="post" action="#" id="contact-form">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2"> Name * </label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="What's your name?" />
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> Name * </label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="What's your name?" />
               </div>
 
               <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2"> Email * </label>
-                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Got an email address?" />
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> Email * </label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Got an email address?" />
               </div>
             </div>
 
             <div>
-              <label for="subject" class="block text-sm font-medium text-gray-700 mb-2"> Subject * </label>
-              <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="What's the subject of your message?" />
+              <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> Subject * </label>
+              <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="What's the subject of your message?" />
             </div>
 
             <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-2"> Message * </label>
-              <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-vertical" placeholder="Tell us about how we can help."></textarea>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"> Message * </label>
+              <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-vertical" placeholder="Tell us about how we can help."></textarea>
             </div>
 
             <div class="text-center">

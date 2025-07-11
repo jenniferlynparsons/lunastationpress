@@ -59,7 +59,7 @@ const linkUrl = book.slug === 'quarterly' ? '/quarterly' : `/books/${book.slug}`
   <a href={linkUrl} class={`book-item cursor-pointer block ${containerClass}`} data-genre={book.data.genre}>
     <div class="relative overflow-hidden">
       <!-- Book Cover -->
-      <div class="bg-gray-200 overflow-hidden">
+      <div class="bg-gray-200 dark:bg-gray-700 overflow-hidden">
         {imageToUse ? (
           <ImageLoader 
             folder={imageFolder}
@@ -87,11 +87,11 @@ const linkUrl = book.slug === 'quarterly' ? '/quarterly' : `/books/${book.slug}`
     
     <!-- Book Title -->
     <div class="mt-4 text-center">
-      <h3 class={`text-lg font-semibold text-gray-900 ${titleClass}`}>
+      <h3 class={`text-lg font-semibold text-gray-900 dark:text-gray-100 ${titleClass}`}>
         {book.data.title}
       </h3>
       {showAuthor && book.data.author && (
-        <p class="text-sm text-gray-600 mt-1">
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
           {book.slug === 'quarterly' ? book.data.author : `by ${book.data.author}`}
         </p>
       )}
@@ -130,7 +130,7 @@ const linkUrl = book.slug === 'quarterly' ? '/quarterly' : `/books/${book.slug}`
         <p class="text-sm sm:text-base">{book.data.tag}</p>
       )}
       {showAuthor && book.data.author && (
-        <p class="text-sm sm:text-base text-gray-600">
+        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
           {book.slug === 'quarterly' ? book.data.author : `by ${book.data.author}`}
         </p>
       )}
@@ -146,7 +146,7 @@ const linkUrl = book.slug === 'quarterly' ? '/quarterly' : `/books/${book.slug}`
 {isFeatured && (
   <article class={`cursor-pointer ${containerClass}`}>
     <a href={linkUrl} class="block">
-      <div class="bg-white overflow-hidden relative">
+      <div class="bg-gray-50 dark:bg-gray-800 overflow-hidden relative">
         <div class="flex justify-center p-4">
           <div class="w-3/4">
             <ImageLoader 
@@ -167,9 +167,9 @@ const linkUrl = book.slug === 'quarterly' ? '/quarterly' : `/books/${book.slug}`
           </div>
         )}
         <div class="p-6 text-center">
-          <h3 class={`text-3xl font-semibold mb-2 text-gray-800 ${titleClass}`}>{book.data.title}</h3>
+          <h3 class={`text-3xl font-semibold mb-2 text-gray-800 dark:text-gray-100 ${titleClass}`}>{book.data.title}</h3>
           {showAuthor && book.data.author && (
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
               {book.slug === 'quarterly' ? book.data.author : `by ${book.data.author}`}
             </p>
           )}

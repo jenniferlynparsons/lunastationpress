@@ -20,7 +20,7 @@ const pageDescription = "Chacruna - From the depths of the rainforest to the hei
   <head>
     <BaseHead title={pageTitle} description={pageDescription} />
   </head>
-  <body class="bg-white">
+  <body class="bg-white dark:bg-gray-900">
     <Header />
 
     <main>
@@ -30,7 +30,7 @@ const pageDescription = "Chacruna - From the depths of the rainforest to the hei
         <div class="container mx-auto px-4 max-w-6xl">
           <!-- About Chacruna -->
           <div class="prose prose-lg mx-auto max-w-4xl mb-16">
-            <p class="text-lg text-gray-700 leading-relaxed">From the depths of the rainforest to the heights of the Hermetic tradition, Chacruna is the next stage in Luna Station's growth as a publisher of ideas. With books on Reiki and the Tarot on the way, this imprint promises a non-dogmatic exploration of the mystery current that runs through the Western tradition and beyond.</p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">From the depths of the rainforest to the heights of the Hermetic tradition, Chacruna is the next stage in Luna Station's growth as a publisher of ideas. With books on Reiki and the Tarot on the way, this imprint promises a non-dogmatic exploration of the mystery current that runs through the Western tradition and beyond.</p>
           </div>
 
           <!-- Chacruna Books -->
@@ -48,8 +48,8 @@ const pageDescription = "Chacruna - From the depths of the rainforest to the hei
                             <span class="text-gray-500 text-sm">No cover available</span>
                           </div>
                         )}
-                        <h3 class="text-lg font-medium text-gray-800 mt-4 group-">{book.data.title}</h3>
-                        <p class="text-sm text-gray-600">{book.data.author}</p>
+                        <h3 class="text-lg font-medium text-gray-800 dark:text-gray-200 mt-4 group-">{book.data.title}</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">{book.data.author}</p>
                       </a>
                     </div>
                   ))}
@@ -61,7 +61,7 @@ const pageDescription = "Chacruna - From the depths of the rainforest to the hei
           {
             chacrunaBooks.length === 0 && (
               <div class="text-center">
-                <p class="text-gray-600">New Chacruna publications coming soon...</p>
+                <p class="text-gray-600 dark:text-gray-400">New Chacruna publications coming soon...</p>
               </div>
             )
           }

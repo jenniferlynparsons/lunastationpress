@@ -23,6 +23,35 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Dark mode initialization script - prevents FOUC -->
+<script is:inline>
+  (function() {
+    const theme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Save the determined theme
+    localStorage.setItem('theme', theme);
+  })();
+</script>
+
+<!-- Handle view transitions -->
+<script is:inline>
+  document.addEventListener('astro:after-swap', () => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  });
+</script>
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 

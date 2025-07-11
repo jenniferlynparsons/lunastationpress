@@ -62,13 +62,13 @@ const getPageUrl = (pageNum: number) => {
     {page.url.prev ? (
       <a 
         href={page.url.prev} 
-        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
+        class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
         aria-label="Previous page"
       >
         Previous
       </a>
     ) : (
-      <span class="px-4 py-2 text-sm font-medium text-gray-300 bg-gray-100 border border-gray-300 rounded-md cursor-not-allowed">
+      <span class="px-4 py-2 text-sm font-medium text-gray-300 dark:text-gray-600 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md cursor-not-allowed">
         Previous
       </span>
     )}
@@ -77,10 +77,10 @@ const getPageUrl = (pageNum: number) => {
     <div class="flex space-x-1">
       {pageNumbers.map(pageNum => (
         pageNum === '...' ? (
-          <span class="px-3 py-2 text-sm font-medium text-gray-500">...</span>
+          <span class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">...</span>
         ) : pageNum === page.currentPage ? (
           <span 
-            class="px-3 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md"
+            class="px-3 py-2 text-sm font-medium text-white bg-blue-600 dark:bg-blue-700 border border-blue-600 dark:border-blue-700 rounded-md"
             aria-current="page"
           >
             {pageNum}
@@ -88,7 +88,7 @@ const getPageUrl = (pageNum: number) => {
         ) : (
           <a 
             href={getPageUrl(pageNum as number)} 
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
+            class="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
             aria-label={`Go to page ${pageNum}`}
           >
             {pageNum}
@@ -101,20 +101,20 @@ const getPageUrl = (pageNum: number) => {
     {page.url.next ? (
       <a 
         href={page.url.next} 
-        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md "
+        class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
         aria-label="Next page"
       >
         Next
       </a>
     ) : (
-      <span class="px-4 py-2 text-sm font-medium text-gray-300 bg-gray-100 border border-gray-300 rounded-md cursor-not-allowed">
+      <span class="px-4 py-2 text-sm font-medium text-gray-300 dark:text-gray-600 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md cursor-not-allowed">
         Next
       </span>
     )}
   </nav>
 
   <!-- Page Info -->
-  <div class="text-center text-sm text-gray-500 mt-4">
+  <div class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
     Showing {page.start + 1} to {page.end + 1} of {page.total} posts
   </div>
 )}

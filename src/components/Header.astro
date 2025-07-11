@@ -1,5 +1,6 @@
 ---
 import NavLink from "./NavLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 const { showHero = false } = Astro.props;
 ---
@@ -11,7 +12,7 @@ const { showHero = false } = Astro.props;
 
   <div class="relative z-10">
     <!-- Top Navigation Bar -->
-    <nav class="w-full bg-black" role="navigation" aria-label="Main navigation">
+    <nav class="w-full bg-black dark:bg-gray-900" role="navigation" aria-label="Main navigation">
       <div class="container mx-auto px-4 py-6">
         <div class="flex items-center justify-between">
           <!-- Logo/Brand -->
@@ -21,18 +22,25 @@ const { showHero = false } = Astro.props;
           </a>
 
           <!-- Desktop Navigation -->
-          <ul class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase">
-            <li><NavLink href="/">Home</NavLink></li>
-            <li><NavLink href="/catalog">Catalog</NavLink></li>
-            <li><NavLink href="/chacruna">Chacruna</NavLink></li>
-            <li><NavLink href="/quarterly">Quarterly</NavLink></li>
-            <li><NavLink href="/blog">Blog</NavLink></li>
-            <li><NavLink href="/about">About</NavLink></li>
-            <li><NavLink href="/contact">Contact</NavLink></li>
-          </ul>
+          <div class="hidden lg:flex items-center space-x-8">
+            <ul class="flex items-center space-x-8 text-sm font-medium tracking-wider uppercase">
+              <li><NavLink href="/">Home</NavLink></li>
+              <li><NavLink href="/catalog">Catalog</NavLink></li>
+              <li><NavLink href="/chacruna">Chacruna</NavLink></li>
+              <li><NavLink href="/quarterly">Quarterly</NavLink></li>
+              <li><NavLink href="/blog">Blog</NavLink></li>
+              <li><NavLink href="/about">About</NavLink></li>
+              <li><NavLink href="/contact">Contact</NavLink></li>
+            </ul>
+            <ThemeToggle />
+          </div>
 
           <!-- Mobile Menu -->
           <div class="flex items-center space-x-4">
+            <!-- Theme toggle for mobile -->
+            <div class="lg:hidden">
+              <ThemeToggle />
+            </div>
             <!-- Mobile menu button -->
             <button id="mobile-menu-button" class="lg:hidden p-2 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -43,7 +51,7 @@ const { showHero = false } = Astro.props;
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden mt-6 bg-black bg-opacity-80 rounded-lg p-6">
+        <div id="mobile-menu" class="hidden lg:hidden mt-6 bg-black bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-90 rounded-lg p-6">
           <ul class="space-y-4 text-center text-sm uppercase tracking-wider">
             <li><NavLink href="/" class="block py-3">Home</NavLink></li>
             <li><NavLink href="/catalog" class="block py-3">Catalog</NavLink></li>
