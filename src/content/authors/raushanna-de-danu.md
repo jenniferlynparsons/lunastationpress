@@ -1,6 +1,5 @@
 ---
 name: "Raushanna de Danu"
-bio: "Raushanna de Danu is a poet and esoteric writer who explores themes of wisdom, transformation, and spiritual practice."
 website: ""
 photoUrl: ""
 socialLinks:
@@ -10,4 +9,4 @@ socialLinks:
   linkedin: ""
 ---
 
-Raushanna de Danu combines her deep knowledge of esoteric traditions with accessible, intelligent writing that makes complex spiritual concepts approachable for modern readers.
+Raushanna is a practicing Wiccan (Third Degree, Sacred Mists Coven), a Usui Reiki Master/Teacher, a certified Vedic Thai-Yoga Massage Bodyworker, and a professional Tarot Reader. She loves reading about, writing about, and talking about anything occult, mystical, or spiritual, and she documents her experiences in her blog, DancingSparkles.blogspot.com, which has been in existence since 2009. She and her husband and her large extended family can often be found on the beaches, bike paths and hiking trails of the Cape May, NJ area.

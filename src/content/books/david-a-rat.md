@@ -4,7 +4,7 @@ author: "Elizabeth Hinckley"
 pubDate: 2014-12-04
 pageCount: 250
 
-coverImage: "062-cover.jpg"
+coverImage: "david.jpg"
 heroImage: "david-a-rat-hero.jpg"
 
 category: "Young Readers"
@@ -13,10 +13,10 @@ genre: "Fiction"
 isbn13: "978-1-938697-53-1"
 
 # purchase links
-paperback: ""
+paperback: "http://www.amazon.com/David-Rat-Elizabeth-Hinckley/dp/1938697480"
 gumroad: ""
 itch: ""
-kindle: ""
+kindle: "http://www.amazon.com/David-Rat-Elizabeth-Hinckley-ebook/dp/B00NUT5Y2M"
 weightless: ""
 smashwords: ""
 kobo: ""

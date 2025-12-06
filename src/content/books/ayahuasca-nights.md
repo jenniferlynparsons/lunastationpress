@@ -4,6 +4,7 @@ author: "Jason Martin"
 pubDate: 2014-12-04
 pageCount: 230
 
+coverImage: "ayahuasca-nights.jpg"
 heroImage: "ayahuasca-nights-hero.jpg"
 
 category: "Memoir"
@@ -13,10 +14,10 @@ imprint: "Chacruna"
 isbn13: "978-1-938697-52-4"
 
 # purchase links
-paperback: ""
+paperback: "http://www.amazon.com/Ayahuasca-Nights-Jason-Martin/dp/1938697529"
 gumroad: ""
 itch: ""
-kindle: ""
+kindle: "http://www.amazon.com/Ayahuasca-Nights-Jason-Martin-ebook/dp/B00OX157FU"
 weightless: ""
 smashwords: ""
 kobo: ""

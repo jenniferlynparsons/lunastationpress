@@ -6,7 +6,7 @@ import PageHeader from "@components/PageHeader.astro";
 import LinkButton from "@components/LinkButton.astro";
 import { SITE_TITLE } from "@/consts";
 
-import lsq062Cover from "@assets/cover-images/062-cover.jpg";
+import lsqCover from "@assets/cover-images/064-cover.jpg";
 
 const pageTitle = `Luna Station Quarterly | ${SITE_TITLE}`;
 const pageDescription = "Luna Station Quarterly - A short fiction magazine featuring speculative fiction and more";
@@ -33,11 +33,11 @@ const pageDescription = "Luna Station Quarterly - A short fiction magazine featu
               <div>
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">About the Quarterly</h2>
                 <div class="text-gray-700 dark:text-gray-300">
-                  <p class="mb-4 text-base leading-relaxed">The on-going mission of Luna Station Quarterly is to display the vast and varied talents of female speculative fiction writers.</p>
+                  <p class="mb-4 text-base leading-relaxed">The on-going mission of Luna Station Quarterly is to display the vast and varied talents of women-identified speculative fiction writers.</p>
 
-                  <p class="mb-4 text-base leading-relaxed">This idea was conceived by founding editor, Jennifer Lyn Parsons, after she became aware of the apparent lack of support for the short story format within the literary community, and the particular lack of exposure of new female writers in general within speculative fiction.</p>
+                  <p class="mb-4 text-base leading-relaxed">This idea was conceived by founding editor, Jennifer Lyn Parsons, after she became aware of the apparent lack of support for the short story format within the literary community, and the particular lack of exposure of new women-identified writers in general within speculative fiction.</p>
 
-                  <p class="text-base leading-relaxed">After tickling at Jennifer's brain for a few years, the time became right for this concept to come to fruition, and the result is Luna Station Quarterly.</p>
+                  <p class="text-base leading-relaxed">After tickling at Jennifer's brain for a few years, the time became right in 2010 for this concept to come to fruition, and the result is Luna Station Quarterly.</p>
                 </div>
               </div>
             </div>
@@ -48,8 +48,9 @@ const pageDescription = "Luna Station Quarterly - A short fiction magazine featu
               <div class="bg-gray-100 dark:bg-gray-800 p-4 sm:p-5 lg:p-6 mb-8 mt-4 lg:mt-0">
                 <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Submissions</h3>
                 <div class="text-gray-700 dark:text-gray-300">
-                  <p class="mb-3 text-sm sm:text-base leading-relaxed">The Quarterly is currently closed for submissions!</p>
-                  <p class="text-sm sm:text-base leading-relaxed">If you are a woman with a speculative fiction story to share, why not send us your story when we reopen on December 15th?</p>
+                  <p class="mb-3 text-sm sm:text-base leading-relaxed">The Quarterly is currently closed for submissions.</p>
+                  <p class="text-sm sm:text-base leading-relaxed">For more information about our submissions process, please visit Luna Station Quarterly's submission page.</p>
+                  <LinkButton url="https://duotrope.com/duosuma/submit/luna-station-quarterly-ehWK6" linkText="Learn more" />
                 </div>
               </div>
             </div>
@@ -60,15 +61,19 @@ const pageDescription = "Luna Station Quarterly - A short fiction magazine featu
             <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Our Latest Issue</h2>
             <div class="flex flex-col md:flex-row gap-8">
               <div class="md:w-1/3">
-                <img src={lsq062Cover.src} alt="LSQ Issue 062 cover" class="w-full h-auto" loading="lazy" decoding="async" />
+                <img src={lsqCover.src} alt="LSQ Issue 064 cover" class="w-full h-auto" loading="lazy" decoding="async" />
               </div>
               <div class="md:w-2/3">
                 <div class="prose prose-lg text-gray-700 dark:text-gray-300">
-                  <p class="mb-4">Elegy and promise stand side by side in this, the thirty fourth issue of your favorite Quarterly. Eight talented authors once again give you glimpses of worlds both familiar and alien, moving backwards and forwards in time and space, from Louisiana & Chicago, to a dusty settlement and abandoned house that bring new flavors to our tired notions of the apocalypse. The women and girls living these stories, like the authors that created them, are balancing old and new, grudges and hope, life and death. May we all learn from their journeys, their wisdom, and their folly.</p>
+                  <p class="mb-4">"We here at Luna Station Quarterly enjoy the standard holiday fare as much as anyone. That said, this issue has none of that whatsoever!</p>
 
-                  <p class="mb-6">Our gorgeous cover is by Lâle Ann.</p>
+                  <p>If you need a break from the season, and would in fact prefer aging druid veterinarians, adorable bee-cat hybrids, a vengeful weather forecaster who can control storms, nuclear faerie beetles, living nail art, an unemployed dragon rider and the usual cast of witches, selkies and the like, you've come to the right place.</p>
 
-                  <LinkButton url="#" linkText="Enjoy the issue" />
+                  <p>Sneak this tome of wonders in your bag come holiday time, kids! It'll keep you busy during the interminably long hours of family strife. Or at the very least, it'll get you banned from the table. Either way, you'll thank us! See you next year!"</p>
+
+                  <p class="mb-6">Our gorgeous cover is by Sve Yurchenko.</p>
+
+                  <LinkButton url="https://www.lunastationquarterly.com/issues/064/" linkText="Enjoy the issue" />
                 </div>
               </div>
             </div>

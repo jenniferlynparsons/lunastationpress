@@ -43,6 +43,10 @@ const books = defineCollection({
 		smashwords: z.string().optional().nullable(),
 		kobo: z.string().optional().nullable(),
 		payhip: z.string().optional().nullable(),
+		direct: z.string().optional().nullable(),
+		barnes: z.string().optional().nullable(),
+		nook: z.string().optional().nullable(),
+		luluHC: z.string().optional().nullable(),
 		
 		imprint: z.string().optional().nullable(),
 		tag: z.string().optional().nullable(),

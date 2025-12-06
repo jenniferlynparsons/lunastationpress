@@ -18,6 +18,6 @@ const { title, backgroundImage, subtitle } = Astro.props;
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide mb-4">
       {title}
     </h1>
-    {subtitle && <p class="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto">{subtitle}</p>}
+    {subtitle && <p class="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto" set:html={subtitle} />}
   </div>
 </section>

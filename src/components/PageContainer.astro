@@ -22,10 +22,8 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, headerType = "standa
   </head>
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
     <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue focus:text-white dark:focus:bg-blue dark:focus:text-white focus:px-4 focus:py-2 focus:rounded focus:no-underline">
-      Skip to main content
-    </a>
-    
+    <a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue focus:text-white dark:focus:bg-blue dark:focus:text-white focus:px-4 focus:py-2 focus:rounded focus:no-underline"> Skip to main content </a>
+
     {headerType === "hero" && <Header showHero={true} />}
     {headerType === "standard" && <Header showHero={false} />}
 

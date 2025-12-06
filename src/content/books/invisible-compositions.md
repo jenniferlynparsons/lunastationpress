@@ -12,8 +12,11 @@ genre: "Poetry"
 
 isbn13: "978-1-938697-60-9"
 
-# purchase links
+# paperback
 paperback: "http://www.amazon.com/Invisible-Compositions-Tara-Lindsey/dp/193869760X"
+barnes: ""
+
+## digital
 gumroad: ""
 itch: ""
 kindle: ""
@@ -21,6 +24,10 @@ weightless: ""
 smashwords: ""
 kobo: ""
 payhip: ""
+
+## hardcover
+luluHC: "http://www.lulu.com/shop/tara-lindsey/invisible-compositions/hardcover/product-22184381.html"
+
 ---
 
 “You are opener. You are maker. You can be invisible, but you shouldn’t be. You can be invulnerable, but you needn’t be. And you can fly. Always remember, you can fly.”

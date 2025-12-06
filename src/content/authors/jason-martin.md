@@ -1,8 +1,7 @@
 ---
 name: "Jason Martin"
-bio: "Jason Martin explores themes of consciousness, spirituality, and transformation in his fiction. His work draws from personal experiences with meditation and philosophical inquiry."
 website: ""
-photoUrl: ""
+photoUrl: "jason-martin.jpg"
 socialLinks:
   twitter: ""
   instagram: ""
@@ -10,4 +9,4 @@ socialLinks:
   linkedin: ""
 ---
 
-Jason Martin is a writer whose work focuses on metaphysical and consciousness-expanding themes. His stories often explore the intersection of spiritual practice and everyday life.
+Jason Martin has a Ph.D in French and Comparative Literature. While in Paris, he studied at the Sorbonne and was a Seine riverboat pilot. He has traveled extensively in India, speaks French, Modern Greek and a little bit of Spanish. A former university professor, he has taught yoga and meditation for many years.  He has spent considerable time in the Peruvian Amazon working with master shaman Don Agustin Rivas-Vasquez, who  initiated him into the world of Amazonian shamanism.

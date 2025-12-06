@@ -21,6 +21,7 @@ weightless: ""
 smashwords: ""
 kobo: ""
 payhip: ""
+direct: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HRWU3WD3BG7TS"
 ---
 
 A connective thread between what has come before and what is yet to come, sQualor // gLamour is an important chapter in Tara’s unfolding, non-linear poetic hyper-narrative. Which is to say it’s kind of batshit, chock full of as many of her passions / obsessions as could fit in twenty four fully illustrated, full color pages. You probably won’t understand this book. Read it anyway. Your future self will thank you.

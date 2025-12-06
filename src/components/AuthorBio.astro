@@ -22,17 +22,13 @@ if (photoUrl) {
 
 <div class="max-w-6xl mx-auto px-12 py-12 sm:px-6 lg:px-12 mb-20 bg-nymph text-white">
   <div class="flex flex-col md:flex-row items-start gap-8">
-    <div class="flex-shrink-0">
-      {
-        authorPhoto ? (
+    {
+      authorPhoto && (
+        <div class="flex-shrink-0">
           <img src={authorPhoto.default.src} alt={`Photo of ${author}`} class="w-60 object-cover " loading="lazy" decoding="async" />
-        ) : (
-          <div class="w-60  flex items-center justify-center">
-            <span class=" text-sm">Photo</span>
-          </div>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
     <div class="flex-grow">
       <h2 class="text-2xl font-semibold mb-4">{author}</h2>
       <div class="prose max-w-none leading-relaxed mb-4 text-white">
