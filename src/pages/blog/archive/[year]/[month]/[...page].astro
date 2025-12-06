@@ -10,7 +10,7 @@ import LinkButton from "@components/LinkButton.astro";
 import { SITE_TITLE } from "@/consts";
 import { getCollection } from "astro:content";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: any) {
   const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   
   // Group posts by year and month
