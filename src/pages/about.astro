@@ -11,6 +11,10 @@ const authors = await getCollection("authors");
 const tara = authors.find((author) => author.data.name === "Tara Quinn Lindsey");
 const jennifer = authors.find((author) => author.data.name === "Jennifer Lyn Parsons");
 
+// Render the bio content
+const { Content: JenniferContent } = jennifer ? await jennifer.render() : { Content: null };
+const { Content: TaraContent } = tara ? await tara.render() : { Content: null };
+
 // Import publisher photos
 import taraPhoto from "@assets/author-photos/tara-quinn-lindsey.jpg";
 import jenniferPhoto from "@assets/author-photos/jennifer-lyn-parsons.jpg";
@@ -37,6 +41,41 @@ const pageDescription = "Learn about Luna Station Press and our mission to publi
           <!-- Publisher Bios - Two Column Layout -->
           <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+               <!-- Jennifer Lyn Parsons -->
+              {jennifer && (
+                <div class="text-center">
+                  <!-- Photo -->
+                  <div class="flex justify-center mb-6">
+                    <img 
+                      src={jenniferPhoto.src} 
+                      alt="Photo of Jennifer Lyn Parsons" 
+                      class="h-72 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  
+                  <!-- Name and Title -->
+                  <h3 class="text-2xl font-medium mb-2 text-gray-800 dark:text-gray-200">{jennifer.data.name}</h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-6">Founder, Editor-in-Chief</p>
+                  
+                  <!-- Social Links -->
+                  <div class="flex justify-center gap-4 mb-8">
+                    
+                    {jennifer.data.website && (
+                      <a href={jennifer.data.website} class="text-gray-500 dark:text-gray-400 " target="_blank" rel="noopener noreferrer">
+                        Website
+                      </a>
+                    )}
+                  </div>
+                  
+                  <!-- Bio Text -->
+                  <div class="text-left text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                    {JenniferContent && <JenniferContent />}
+                  </div>
+                </div>
+              )}
               
               <!-- Tara Quinn Lindsey -->
               {tara && (
@@ -68,48 +107,12 @@ const pageDescription = "Learn about Luna Station Press and our mission to publi
                   
                   <!-- Bio Text -->
                   <div class="text-left text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
-                    <p>Tara Quinn Lindsey has promethean ambitions. After a lifetime spent toiling away in the music business (she started drumming at age six and performing at thirteen) not to mention over twenty years exploring the hidden pathways of the Western Mystery Tradition, she is now turning her attention, energy and charm towards the publishing industry.</p>
-                    
-                    <p>A poet by vocation, aspiring towards the visionary lineage of Blake, Whitman, Dickinson, Ginsberg and Merwin, Tara is excited by the opportunities afforded to dedicated, creative writers at this crucial time in the history of books and reading.</p>
+                    {TaraContent && <TaraContent />}
                   </div>
                 </div>
               )}
 
-              <!-- Jennifer Lyn Parsons -->
-              {jennifer && (
-                <div class="text-center">
-                  <!-- Photo -->
-                  <div class="flex justify-center mb-6">
-                    <img 
-                      src={jenniferPhoto.src} 
-                      alt="Photo of Jennifer Lyn Parsons" 
-                      class="h-72 object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  
-                  <!-- Name and Title -->
-                  <h3 class="text-2xl font-medium mb-2 text-gray-800 dark:text-gray-200">{jennifer.data.name}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 mb-6">Editor-in-Chief, Founder</p>
-                  
-                  <!-- Social Links -->
-                  <div class="flex justify-center gap-4 mb-8">
-                    
-                    {jennifer.data.website && (
-                      <a href={jennifer.data.website} class="text-gray-500 dark:text-gray-400 " target="_blank" rel="noopener noreferrer">
-                        Website
-                      </a>
-                    )}
-                  </div>
-                  
-                  <!-- Bio Text -->
-                  <div class="text-left text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
-                    <p>Jennifer Lyn Parsons is a writer and software engineer. When not writing code or prose, she is also the publisher and editor-in-chief of Luna Station Quarterly. She finds joy in baseball, tea, comics books, discovering music new and old, and making analog things.</p>
-                    
-                  </div>
-                </div>
-              )}
+             
 
             </div>
           </div>
