@@ -13,7 +13,7 @@ genre: "Fiction"
 isbn13: "978-1-949077-50-6"
 
 # purchase links
-paperback: ""
+paperback: "https://www.amazon.com/dp/1949077500"
 gumroad: "https://gum.co/all-is-hell-bent"
 itch: "https://pixelpaperyarn.itch.io/all-is-hell-bent"
 kindle: "https://www.amazon.com/dp/B0G6XBJ8BP"
