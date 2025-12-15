@@ -22,8 +22,6 @@ smashwords: "https://www.smashwords.com/books/view/1004103"
 kobo: "https://www.kobo.com/us/en/ebook/take-on-me-13"
 payhip: ""
 
-newRelease: true
-featuredOnHome: true
 ---
 
 This is a story about falling in love, about the families we’re born into and the ones we find along the way. It’s about grief and change and bravery. It’s about food and music and discovering our own ways of moving through the world.
